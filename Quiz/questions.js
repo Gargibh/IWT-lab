@@ -1,0 +1,123 @@
+// QUESTION_BANK: 100 animal trivia questions for Class 8 students.
+// Each question has 4 options; "a" holds the exact text of the correct option.
+const QUESTION_BANK = [
+  // --- Classification ---
+  { q: "Which class of animals is known for having feathers?", o: ["Mammals", "Reptiles", "Aves (Birds)", "Amphibians"], a: "Aves (Birds)" },
+  { q: "Animals that maintain a constant body temperature are called:", o: ["Cold-blooded", "Warm-blooded", "Ectothermic", "Poikilothermic"], a: "Warm-blooded" },
+  { q: "Frogs and toads belong to which class of animals?", o: ["Reptiles", "Amphibians", "Fish", "Mammals"], a: "Amphibians" },
+  { q: "Snakes and lizards belong to which class of vertebrates?", o: ["Amphibians", "Mammals", "Reptiles", "Birds"], a: "Reptiles" },
+  { q: "Animals without a backbone are called:", o: ["Vertebrates", "Invertebrates", "Mammals", "Chordates"], a: "Invertebrates" },
+  { q: "Which is the largest group of animals by number of species?", o: ["Mammals", "Birds", "Insects", "Fish"], a: "Insects" },
+  { q: "Whales are classified as mammals mainly because they:", o: ["Lay eggs", "Breathe through gills", "Feed their young with milk", "Are cold-blooded"], a: "Feed their young with milk" },
+  { q: "Sharks belong to which group of animals?", o: ["Mammals", "Fish", "Reptiles", "Amphibians"], a: "Fish" },
+  { q: "Animals that can live both on land and in water are called:", o: ["Aquatic", "Terrestrial", "Amphibians", "Arboreal"], a: "Amphibians" },
+  { q: "How many pairs of legs do insects have?", o: ["2 pairs", "3 pairs", "4 pairs", "5 pairs"], a: "3 pairs" },
+
+  // --- Habitat ---
+  { q: "Which animal is known as the \"Ship of the Desert\"?", o: ["Horse", "Camel", "Donkey", "Goat"], a: "Camel" },
+  { q: "Polar bears are mainly found in which region?", o: ["Sahara Desert", "Amazon Rainforest", "Arctic", "Australia"], a: "Arctic" },
+  { q: "Frogs typically lay their eggs in:", o: ["Trees", "Soil", "Water", "Rocks"], a: "Water" },
+  { q: "The kangaroo is native to which continent?", o: ["Africa", "Asia", "Australia", "South America"], a: "Australia" },
+  { q: "Which of these animals lives in an underground burrow?", o: ["Eagle", "Rabbit", "Dolphin", "Peacock"], a: "Rabbit" },
+  { q: "Coral reefs are mostly found in:", o: ["Cold deep oceans", "Warm shallow seas", "Freshwater lakes", "Deserts"], a: "Warm shallow seas" },
+  { q: "Penguins are mostly found in which continent?", o: ["Africa", "Antarctica", "Asia", "Europe"], a: "Antarctica" },
+  { q: "The giant panda's natural habitat is found in which country?", o: ["India", "China", "Japan", "Kenya"], a: "China" },
+  { q: "Which of the following animals mainly lives in trees?", o: ["Camel", "Orangutan", "Crocodile", "Penguin"], a: "Orangutan" },
+  { q: "Crocodiles are best described as animals that live:", o: ["Only underwater", "Only on land", "Both in water and on land", "Only underground"], a: "Both in water and on land" },
+
+  // --- Diet ---
+  { q: "Animals that eat only plants are called:", o: ["Carnivores", "Herbivores", "Omnivores", "Insectivores"], a: "Herbivores" },
+  { q: "Animals that eat both plants and animals are called:", o: ["Herbivores", "Carnivores", "Omnivores", "Scavengers"], a: "Omnivores" },
+  { q: "Animals that eat only meat are called:", o: ["Herbivores", "Omnivores", "Carnivores", "Producers"], a: "Carnivores" },
+  { q: "Lions mainly hunt animals such as zebras and deer, which makes lions:", o: ["Herbivores", "Carnivores", "Omnivores", "Decomposers"], a: "Carnivores" },
+  { q: "Which of these animals is a herbivore?", o: ["Lion", "Tiger", "Elephant", "Eagle"], a: "Elephant" },
+  { q: "Vultures mainly feed on:", o: ["Fresh fruit", "Dead animals", "Insects only", "Leaves"], a: "Dead animals" },
+  { q: "Which of the following animals is best known as an omnivore?", o: ["Bear", "Shark", "Cow", "Eagle"], a: "Bear" },
+  { q: "Termites mainly feed on:", o: ["Meat", "Wood", "Fish", "Grass"], a: "Wood" },
+  { q: "Anteaters primarily eat:", o: ["Fruits", "Ants and termites", "Fish", "Leaves"], a: "Ants and termites" },
+  { q: "Baleen whales feed mainly by filtering which of these from water?", o: ["Seaweed", "Krill and small fish", "Coral", "Sand"], a: "Krill and small fish" },
+
+  // --- Adaptations ---
+  { q: "Camels have humps mainly to:", o: ["Store water directly", "Store fat for energy", "Help them run faster", "Protect their spine"], a: "Store fat for energy" },
+  { q: "Ducks have webbed feet mainly to help them:", o: ["Dig burrows", "Climb trees", "Swim", "Fly faster"], a: "Swim" },
+  { q: "Polar bears have thick white fur mainly for:", o: ["Attracting mates", "Insulation and camouflage in snow", "Faster swimming", "Better hearing"], a: "Insulation and camouflage in snow" },
+  { q: "A giraffe's long neck mainly helps it to:", o: ["Swim better", "Reach leaves high on trees", "Run faster", "Hear predators"], a: "Reach leaves high on trees" },
+  { q: "Chameleons are best known for their ability to:", o: ["Fly short distances", "Change color to blend in", "Breathe underwater", "Regrow their whole body"], a: "Change color to blend in" },
+  { q: "Bats find their way in the dark mainly using:", o: ["Sharp eyesight", "Echolocation", "Sense of smell", "Bright colors"], a: "Echolocation" },
+  { q: "Desert foxes like the fennec fox have large ears mainly to:", o: ["Hear predators better", "Release excess body heat", "Attract mates", "Scare enemies"], a: "Release excess body heat" },
+  { q: "The sharp, curved claws of an eagle used for gripping prey are called:", o: ["Fangs", "Talons", "Hooves", "Spurs"], a: "Talons" },
+  { q: "Fish take in oxygen from water using their:", o: ["Lungs", "Skin only", "Gills", "Nostrils"], a: "Gills" },
+  { q: "Arctic foxes change the color of their fur with the seasons mainly for:", o: ["Warmth only", "Camouflage", "Attracting mates", "Faster running"], a: "Camouflage" },
+
+  // --- Records ---
+  { q: "Which is the fastest land animal in the world?", o: ["Lion", "Horse", "Cheetah", "Antelope"], a: "Cheetah" },
+  { q: "Which is the largest land animal in the world?", o: ["Giraffe", "African elephant", "Rhino", "Hippopotamus"], a: "African elephant" },
+  { q: "Which is the largest animal to have ever lived on Earth?", o: ["African elephant", "Blue whale", "Great white shark", "Giant squid"], a: "Blue whale" },
+  { q: "Which flightless bird can run at very high speed?", o: ["Penguin", "Ostrich", "Kiwi", "Emu"], a: "Ostrich" },
+  { q: "Which is the tallest animal in the world?", o: ["Elephant", "Giraffe", "Camel", "Horse"], a: "Giraffe" },
+  { q: "Which of these animals is known for living well over 100 years?", o: ["Dog", "Cat", "Galapagos tortoise", "Rabbit"], a: "Galapagos tortoise" },
+  { q: "Which bird is the fastest in the world during a hunting dive?", o: ["Eagle", "Sparrow", "Peregrine falcon", "Owl"], a: "Peregrine falcon" },
+  { q: "Which is the smallest bird in the world?", o: ["Sparrow", "Bee hummingbird", "Finch", "Robin"], a: "Bee hummingbird" },
+  { q: "Which of these animals has one of the strongest bite forces?", o: ["Saltwater crocodile", "Deer", "Rabbit", "Parrot"], a: "Saltwater crocodile" },
+  { q: "Which is the largest of the big cats?", o: ["Lion", "Leopard", "Tiger", "Jaguar"], a: "Tiger" },
+
+  // --- Life cycle / reproduction ---
+  { q: "The process of a caterpillar changing into a butterfly is called:", o: ["Hibernation", "Metamorphosis", "Migration", "Regeneration"], a: "Metamorphosis" },
+  { q: "Most reptiles reproduce by:", o: ["Giving birth to live young", "Laying eggs", "Splitting in half", "Budding"], a: "Laying eggs" },
+  { q: "Animals that give birth to live young, rather than laying eggs, are called:", o: ["Oviparous", "Viviparous", "Herbivores", "Invertebrates"], a: "Viviparous" },
+  { q: "A baby kangaroo is called a:", o: ["Cub", "Joey", "Calf", "Kit"], a: "Joey" },
+  { q: "A baby frog is called a:", o: ["Larva", "Tadpole", "Nymph", "Fry"], a: "Tadpole" },
+  { q: "Which of these mammals lays eggs instead of giving birth to live young?", o: ["Kangaroo", "Platypus", "Dolphin", "Bat"], a: "Platypus" },
+  { q: "A baby cow is called a:", o: ["Calf", "Foal", "Kid", "Lamb"], a: "Calf" },
+  { q: "The complete change in body form during an animal's life cycle is called:", o: ["Migration", "Hibernation", "Metamorphosis", "Adaptation"], a: "Metamorphosis" },
+  { q: "A group of lions living together is called a:", o: ["Herd", "Flock", "Pride", "Pack"], a: "Pride" },
+  { q: "A baby dog is called a:", o: ["Kitten", "Puppy", "Cub", "Pup"], a: "Puppy" },
+
+  // --- Behavior ---
+  { q: "The seasonal movement of animals from one place to another is called:", o: ["Hibernation", "Migration", "Metamorphosis", "Camouflage"], a: "Migration" },
+  { q: "Animals that sleep through the winter in a deep, inactive state are said to be:", o: ["Migrating", "Hibernating", "Nocturnal", "Diurnal"], a: "Hibernating" },
+  { q: "Which of these animals is well known for hibernating in winter?", o: ["Bear", "Elephant", "Peacock", "Dolphin"], a: "Bear" },
+  { q: "Animals that are mostly active at night are called:", o: ["Diurnal", "Nocturnal", "Aquatic", "Migratory"], a: "Nocturnal" },
+  { q: "Honeybees tell other bees where flowers are by performing a special:", o: ["Sound", "Dance", "Color change", "Smell trail only"], a: "Dance" },
+  { q: "Ants live together in large, organized groups called:", o: ["Herds", "Colonies", "Flocks", "Prides"], a: "Colonies" },
+  { q: "Which bird is famous for migrating thousands of kilometres every year?", o: ["Sparrow", "Arctic tern", "Peacock", "Pigeon"], a: "Arctic tern" },
+  { q: "Elephants are especially well known for having a strong sense of:", o: ["Taste", "Memory", "Color vision", "Hearing pitch"], a: "Memory" },
+  { q: "Which animal is known to use sticks as tools to pull termites out of mounds?", o: ["Chimpanzee", "Zebra", "Deer", "Owl"], a: "Chimpanzee" },
+  { q: "Owls are mostly active during:", o: ["Early morning", "Afternoon", "Night", "Midday"], a: "Night" },
+
+  // --- Body parts & functions ---
+  { q: "The outer covering of a snake's body is made up of:", o: ["Fur", "Feathers", "Scales", "Shell"], a: "Scales" },
+  { q: "Birds have hollow bones mainly to help them:", o: ["Swim", "Fly more easily", "Dig burrows", "Store fat"], a: "Fly more easily" },
+  { q: "Which part of a bird's body helps it steer while flying?", o: ["Beak", "Tail feathers", "Claws", "Eyes"], a: "Tail feathers" },
+  { q: "Insects breathe through tiny openings on their body called:", o: ["Gills", "Lungs", "Spiracles", "Nostrils"], a: "Spiracles" },
+  { q: "Which organ helps a fish stay balanced and float at a certain depth in water?", o: ["Gills", "Swim bladder", "Fins", "Scales"], a: "Swim bladder" },
+  { q: "An elephant uses its trunk mainly for:", o: ["Seeing and hearing", "Smelling, breathing, and grabbing things", "Digestion", "Balance only"], a: "Smelling, breathing, and grabbing things" },
+  { q: "A turtle's hard protective outer covering is called its:", o: ["Skin", "Shell", "Scales", "Carapace only on legs"], a: "Shell" },
+  { q: "How many legs does a spider have?", o: ["6", "8", "10", "4"], a: "8" },
+  { q: "Which animal has a long, sticky tongue used to catch insects?", o: ["Chameleon", "Elephant", "Zebra", "Eagle"], a: "Chameleon" },
+  { q: "Whales breathe through an opening on top of their head called a:", o: ["Gill slit", "Blowhole", "Nostril flap", "Air sac"], a: "Blowhole" },
+
+  // --- Conservation ---
+  { q: "Animals that are at risk of dying out completely are called:", o: ["Domestic species", "Endangered species", "Invasive species", "Migratory species"], a: "Endangered species" },
+  { q: "Which of these animals is considered endangered in the wild?", o: ["House cat", "Pigeon", "Bengal Tiger", "Cow"], a: "Bengal Tiger" },
+  { q: "A major reason many wild animals are losing their natural homes today is:", o: ["Too much rainfall", "Deforestation", "Cold weather", "Ocean currents"], a: "Deforestation" },
+  { q: "The act of protecting wildlife and natural habitats is called:", o: ["Migration", "Domestication", "Conservation", "Pollination"], a: "Conservation" },
+  { q: "Which of these is a well-known international wildlife conservation organization?", o: ["WWF", "FIFA", "UNESCO Sports", "ICC"], a: "WWF" },
+  { q: "A protected area set aside for wild animals to live safely is called a:", o: ["Zoo", "Wildlife sanctuary", "Farmhouse", "Aquarium only"], a: "Wildlife sanctuary" },
+  { q: "The term \"poaching\" refers to:", o: ["Feeding wild animals", "Illegal hunting of animals", "Building wildlife parks", "Studying animal behavior"], a: "Illegal hunting of animals" },
+  { q: "Which animal is the national animal of India?", o: ["Lion", "Elephant", "Royal Bengal Tiger", "Peacock"], a: "Royal Bengal Tiger" },
+  { q: "Global warming affects polar bears mainly by:", o: ["Increasing their food supply", "Melting the sea ice they depend on", "Making them grow bigger", "Improving their habitat"], a: "Melting the sea ice they depend on" },
+  { q: "Planting trees and stopping illegal hunting are both examples of:", o: ["Pollution", "Wildlife conservation", "Migration", "Domestication"], a: "Wildlife conservation" },
+
+  // --- Fun facts / general knowledge ---
+  { q: "Which animal is often called \"man's best friend\"?", o: ["Cat", "Dog", "Horse", "Parrot"], a: "Dog" },
+  { q: "Which bird is well known for mimicking human speech?", o: ["Crow", "Parrot", "Sparrow", "Eagle"], a: "Parrot" },
+  { q: "Which bird is the national bird of India?", o: ["Peacock", "Sparrow", "Crow", "Eagle"], a: "Peacock" },
+  { q: "Honey is made by:", o: ["Ants", "Bees", "Wasps", "Butterflies"], a: "Bees" },
+  { q: "Which animal has black and white stripes that are unique to each individual, like a fingerprint?", o: ["Tiger", "Zebra", "Panda", "Skunk"], a: "Zebra" },
+  { q: "Which sea creature has eight arms?", o: ["Starfish", "Octopus", "Jellyfish", "Crab"], a: "Octopus" },
+  { q: "Which animal makes a sound often described as \"laughing\"?", o: ["Hyena", "Owl", "Sheep", "Goat"], a: "Hyena" },
+  { q: "Silk thread is obtained from the cocoon of the:", o: ["Honeybee", "Silkworm", "Spider", "Ant"], a: "Silkworm" },
+  { q: "Which animal is known for being able to regrow a lost tail?", o: ["Lizard", "Rabbit", "Squirrel", "Bat"], a: "Lizard" },
+  { q: "Which animal is considered the closest living relative to humans?", o: ["Gorilla", "Chimpanzee", "Orangutan", "Baboon"], a: "Chimpanzee" },
+];

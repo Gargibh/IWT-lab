@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gargi Bhowmick — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --patina-deep:   #33513f;
+    --patina:        #5c8471;
+    --patina-soft:   #a9c4b3;
+    --pink:          #f2c6d6;
+    --pink-deep:     #e18aa8;
+    --cream:         #faf6ef;
+    --ink:           #1c231e;
+    --ink-soft:      #4c5750;
+    --line:          #d8cfc0;
+    --card:          #ffffff;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+  }
+
+  ::selection{ background:var(--pink); color:var(--ink); }
+
+  a{ color:var(--patina-deep); }
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  .wrap{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- HEADER ---------- */
+
+  header{
+    position:relative;
+    padding:72px 0 56px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 88% 12%, var(--pink) 0%, var(--pink) 22%, transparent 23%),
+      var(--cream);
+  }
+
+  header::before{
+    content:"";
+    position:absolute;
+    top:-140px; left:-140px;
+    width:420px; height:420px;
+    border-radius:50%;
+    background:var(--patina-soft);
+    opacity:.55;
+    z-index:0;
+  }
+
+  .header-inner{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    gap:44px;
+  }
+
+  .photo-frame{
+    flex:0 0 auto;
+    width:172px;
+    height:172px;
+    border-radius:50%;
+    padding:6px;
+    background:conic-gradient(from 140deg, var(--patina-deep), var(--pink-deep), var(--patina), var(--patina-deep));
+    box-shadow:0 18px 40px -14px rgba(51,81,63,.45);
+  }
+
+  .photo-frame img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    border:4px solid var(--cream);
+  }
+
+  .header-text{ flex:1 1 auto; min-width:0; }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:.04em;
+    color:var(--patina-deep);
+    background:var(--patina-soft);
+    padding:5px 12px;
+    border-radius:20px;
+    margin-bottom:16px;
+  }
+
+  .eyebrow .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--pink-deep);
+    display:inline-block;
+  }
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(38px, 5.4vw, 62px);
+    line-height:1.03;
+    margin:0 0 10px;
+    letter-spacing:-.01em;
+  }
+
+  h1 .accent{ color:var(--patina-deep); }
+
+  .role-line{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:16px;
+    color:var(--ink-soft);
+    margin:0 0 20px;
+  }
+
+  .role-line .caret{
+    display:inline-block;
+    width:9px; height:18px;
+    background:var(--pink-deep);
+    margin-left:2px;
+    vertical-align:-3px;
+    animation:blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 18px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .contact-row span{ white-space:nowrap; }
+  .contact-row a{ color:var(--ink-soft); text-decoration:none; border-bottom:1px dashed var(--line); }
+  .contact-row a:hover{ color:var(--patina-deep); border-color:var(--patina-deep); }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+
+  main{ padding:8px 0 80px; }
+
+  section{
+    margin-top:52px;
+  }
+
+  .section-label{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    color:var(--patina-deep);
+    margin-bottom:20px;
+  }
+
+  .section-label .slash{ color:var(--pink-deep); font-weight:600; }
+
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  /* ---------- SUMMARY ---------- */
+
+  .summary-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:5px solid var(--patina);
+    border-radius:6px;
+    padding:26px 28px;
+    font-size:16px;
+    color:var(--ink-soft);
+  }
+  .summary-card strong{ color:var(--ink); }
+
+  /* ---------- EDUCATION ---------- */
+
+  .timeline{
+    position:relative;
+    padding-left:26px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:6px; top:6px; bottom:6px;
+    width:2px;
+    background:var(--patina-soft);
+  }
+
+  .edu-item{
+    position:relative;
+    padding-bottom:26px;
+  }
+  .edu-item:last-child{ padding-bottom:0; }
+
+  .edu-item::before{
+    content:"";
+    position:absolute;
+    left:-26px; top:5px;
+    width:13px; height:13px;
+    border-radius:50%;
+    background:var(--pink-deep);
+    border:3px solid var(--cream);
+    box-shadow:0 0 0 2px var(--patina-soft);
+  }
+
+  .edu-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:6px 16px;
+  }
+
+  .edu-degree{ font-weight:600; font-size:17px; }
+
+  .edu-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--patina-deep);
+    background:var(--patina-soft);
+    padding:3px 10px;
+    border-radius:12px;
+    white-space:nowrap;
+  }
+
+  .edu-place{ color:var(--ink-soft); font-size:14.5px; margin-top:3px; }
+
+  /* ---------- SKILLS ---------- */
+
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+    gap:16px;
+  }
+
+  .skill-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:18px 20px;
+  }
+
+  .skill-card h3{
+    margin:0 0 12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--patina-deep);
+  }
+
+  .tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    padding:5px 10px;
+    border-radius:5px;
+    background:var(--cream);
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+
+  .tag.pink{ background:var(--pink); border-color:var(--pink-deep); }
+  .tag.green{ background:var(--patina-soft); border-color:var(--patina); }
+
+  /* ---------- NPTEL / COURSES ---------- */
+
+  .course-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:16px;
+  }
+
+  .course-card{
+    background:var(--patina-deep);
+    color:var(--cream);
+    border-radius:6px;
+    padding:20px 22px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .course-card::after{
+    content:"";
+    position:absolute;
+    right:-30px; bottom:-30px;
+    width:100px; height:100px;
+    border-radius:50%;
+    background:var(--pink);
+    opacity:.18;
+  }
+
+  .course-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--pink);
+    margin-bottom:8px;
+    display:block;
+  }
+
+  .course-title{ font-weight:600; font-size:16.5px; }
+
+  /* ---------- FOOTER ---------- */
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 0 40px;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+
+  @media (max-width:640px){
+    header{ padding:52px 0 40px; }
+    .header-inner{ flex-direction:column; text-align:center; gap:24px; }
+    .contact-row{ justify-content:center; }
+    .section-label::after{ display:none; }
+    .edu-top{ flex-direction:column; align-items:flex-start; }
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--patina-deep);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .role-line .caret{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="photo-frame">
+      <img src="image.jpg" alt="Portrait of Gargi Bhowmick">
+    </div>
+    <div class="header-text">
+      <span class="eyebrow"><span class="dot"></span>open to internships &amp; opportunities</span>
+      <h1>Gargi <span class="accent">Bhowmick</span></h1>
+      <p class="role-line">MCA Student, Pondicherry University<span class="caret"></span></p>
+      <div class="contact-row">
+        <span>📧 <a href="mailto:gargibhowmick01@gmail.com">gargibhowmick@gmail.com</a></span>
+        <span>📱 <a href="tel:+919436304620">+91 9436304620</a></span>
+        <span>📍 Pondicherry, India</span><br>
+        <span>🔗 <a href="https://linkedin.com/in/gargi-b-175b2020a">linkedin</a></span>
+        <span>💻 <a href="https://github.com/Gargibh">github</a></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="summary">
+    <div class="section-label"><span class="slash">//</span> about</div>
+    <div class="summary-card">
+      <strong>Second-year MCA student</strong> at Pondicherry University, building a foundation across full-stack
+      development, cloud platforms and applied AI. Comes from an Economics background — comfortable moving between
+      structured analytical thinking and hands-on coding. Currently exploring how software, data and
+      cloud infrastructure fit together, and looking for opportunities to apply that in a real team.
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-label"><span class="slash">//</span> education</div>
+    <div class="timeline">
+      <div class="edu-item">
+        <div class="edu-top">
+          <span class="edu-degree">Master of Computer Applications (MCA)</span>
+          <span class="edu-date">2024 — Present</span>
+        </div>
+        <div class="edu-place">Pondicherry University, Pondicherry · currently pursuing</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-top">
+          <span class="edu-degree">B.Sc. Economics</span>
+          <span class="edu-date">Completed</span>
+        </div>
+        <div class="edu-place">St. Anthony's College, Shillong, Meghalaya</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-label"><span class="slash">//</span> skills</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <div class="tag-row">
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">Java</span>
+          <span class="tag">C</span>
+          <span class="tag">C++</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Frameworks &amp; Libraries</h3>
+        <div class="tag-row">
+          <span class="tag pink">React</span>
+          <span class="tag pink">Django</span>
+          <span class="tag pink">REST APIs</span>
+          <span class="tag pink">Node.js</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Databases</h3>
+        <div class="tag-row">
+          <span class="tag green">SQL</span>
+          <span class="tag green">PostgreSQL</span>
+          <span class="tag green">MongoDB</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Cloud &amp; Tools</h3>
+        <div class="tag-row">
+          <span class="tag">GCP</span>
+          <span class="tag">Git &amp; GitHub</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>AI &amp; Data</h3>
+        <div class="tag-row">
+          <span class="tag pink">Machine Learning basics</span>
+          <span class="tag pink">Pandas / NumPy</span>
+          <span class="tag pink">Prompt Engineering</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="courses">
+    <div class="section-label"><span class="slash">//</span> nptel certifications</div>
+    <div class="course-list">
+      <div class="course-card">
+        <span class="course-badge">NPTEL</span>
+        <div class="course-title">Joy of Computing with Python</div>
+      </div>
+      <div class="course-card">
+        <span class="course-badge">NPTEL</span>
+        <div class="course-title">Cloud Computing</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Built with HTML &amp; CSS — Gargi Bhowmick © 2026</div>
+</footer>
+
+</body>
+</html>

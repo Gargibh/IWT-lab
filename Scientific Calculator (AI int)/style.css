@@ -1,0 +1,839 @@
+/* ==========================================================================
+   NovaCalc Pro - Professional Engineering UI Design System
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Theme Variables & Base Configuration
+   -------------------------------------------------------------------------- */
+:root {
+    /* Color Palette - Dark Charcoal (Default Engineering Theme) */
+    --bg-primary: #303238;
+    --bg-surface: #1a1d24;
+    --bg-surface-elevated: #2a3349;
+    --bg-input: #0d0f12;
+    --border-color: #7686a3;
+    --border-focus: #4c566a;
+
+    --text-primary: #eceff4;
+    --text-secondary: #9aa0a6;
+    --text-muted: #616e88;
+    --text-accent: #88c0d0;
+
+    /* Action & Key Colors */
+    --btn-num-bg: #272c36;
+    --btn-num-hover: #313744;
+    --btn-num-text: #e5e9f0;
+
+    --btn-op-bg: #3b4252;
+    --btn-op-hover: #434c5e;
+    --btn-op-text: #88c0d0;
+
+    --btn-func-bg: #222730;
+    --btn-func-hover: #2c323e;
+    --btn-func-text: #d8dee9;
+
+    --btn-accent-bg: #5e81ac;
+    --btn-accent-hover: #81a1c1;
+    --btn-accent-text: #ffffff;
+
+    --btn-danger-bg: #bf616a;
+    --btn-danger-hover: #d08770;
+    --btn-danger-text: #ffffff;
+
+    /* Status Badges */
+    --badge-bg: #2e3440;
+    --badge-text: #d8dee9;
+    --badge-active-bg: #4c566a;
+    --badge-active-text: #a3be8c;
+    --badge-ai-bg: rgba(136, 192, 208, 0.15);
+    --badge-ai-text: #88c0d0;
+
+    /* Metrics & Geometry */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 14px;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", "Roboto Mono", monospace;
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-deep: 0 16px 38px rgba(0, 0, 0, 0.45);
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Theme Variant: Midnight OLED */
+[data-theme="midnight"] {
+    --bg-primary: #000000;
+    --bg-surface: #0a0c10;
+    --bg-surface-elevated: #121620;
+    --bg-input: #050608;
+    --border-color: #1e2638;
+    --border-focus: #2f3b54;
+
+    --text-primary: #f0f4fc;
+    --text-secondary: #7f8ea6;
+    --text-accent: #00d2ff;
+
+    --btn-num-bg: #0f141e;
+    --btn-num-hover: #192030;
+    --btn-op-bg: #162032;
+    --btn-op-hover: #202d46;
+    --btn-op-text: #00d2ff;
+    --btn-func-bg: #0b0f17;
+    --btn-func-hover: #141b29;
+    --btn-accent-bg: #0072ff;
+    --btn-accent-hover: #0088ff;
+}
+
+/* Theme Variant: Light High-Contrast */
+[data-theme="light"] {
+    --bg-primary: #f5f7fa;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #e4e8f0;
+    --bg-input: #edf0f5;
+    --border-color: #d1d8e0;
+    --border-focus: #a5b1c2;
+
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+    --text-muted: #b2bec3;
+    --text-accent: #0984e3;
+
+    --btn-num-bg: #f1f2f6;
+    --btn-num-hover: #e1e2e6;
+    --btn-num-text: #2d3436;
+    --btn-op-bg: #e3fafc;
+    --btn-op-hover: #c5f6fa;
+    --btn-op-text: #0c8599;
+    --btn-func-bg: #e9ecef;
+    --btn-func-hover: #dee2e6;
+    --btn-func-text: #495057;
+    --btn-accent-bg: #0984e3;
+    --btn-accent-hover: #74b9ff;
+    --btn-accent-text: #ffffff;
+    --btn-danger-bg: #d63031;
+    --btn-danger-hover: #ff7675;
+
+    --shadow-deep: 0 16px 38px rgba(0, 0, 0, 0.08);
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & App Layout Architecture
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    line-height: 1.4;
+}
+
+.app-container {
+    position: relative;
+    width: 100%;
+    max-width: 1050px;
+    height: 92vh;
+    max-height: 850px;
+    display: flex;
+    justify-content: center;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-deep);
+    overflow: hidden;
+}
+
+/* Main Calculator Structure */
+.calculator-app {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    max-width: 520px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Header Bar */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.brand-icon {
+    color: var(--text-accent);
+    font-size: 1.2rem;
+}
+
+.brand-name span {
+    font-size: 0.65rem;
+    background: var(--btn-accent-bg);
+    color: var(--btn-accent-text);
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.header-controls {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.icon-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.icon-btn:hover {
+    background: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    border-color: var(--border-focus);
+}
+
+/* --------------------------------------------------------------------------
+   3. OLED Display Panel & Indicators
+   -------------------------------------------------------------------------- */
+.display-panel {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+    min-height: 140px;
+}
+
+.status-bar {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--badge-bg);
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    user-select: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.badge.active {
+    background: var(--badge-active-bg);
+    color: var(--badge-active-text);
+}
+
+.badge.ai-badge {
+    background: var(--badge-ai-bg);
+    color: var(--badge-ai-text);
+    margin-left: auto;
+    cursor: default;
+}
+
+.badge.hidden {
+    display: none;
+}
+
+/* Expression Input */
+.expression-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.expression-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Main Result & Evaluation Preview */
+.result-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 0.25rem;
+}
+
+.eval-preview {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    min-height: 1.1rem;
+}
+
+.result-display {
+    font-family: var(--font-mono);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.1;
+    max-width: 100%;
+    overflow-x: auto;
+    word-break: break-all;
+    transition: font-size var(--transition-fast);
+}
+
+/* Smart Suggestions Ribbon */
+.smart-suggestions-ribbon {
+    display: flex;
+    gap: 0.35rem;
+    overflow-x: auto;
+    padding-top: 0.5rem;
+    margin-top: 0.25rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.suggestion-chip {
+    font-size: 0.7rem;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-color);
+    color: var(--text-accent);
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.suggestion-chip:hover {
+    background: var(--btn-op-hover);
+    border-color: var(--text-accent);
+}
+
+/* --------------------------------------------------------------------------
+   4. Mode Navigation Tabs & Keypad Grids
+   -------------------------------------------------------------------------- */
+.mode-tabs {
+    display: flex;
+    background: var(--bg-input);
+    padding: 3px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: 0.75rem;
+}
+
+.tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 0;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tab-btn.active {
+    background: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Keypad Layout Manager */
+.keypad-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.memory-bar {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.key-mem {
+    flex: 1;
+    font-size: 0.75rem !important;
+    padding: 6px 0 !important;
+    background: var(--bg-input) !important;
+    color: var(--text-muted) !important;
+}
+
+.key-panel.hidden {
+    display: none;
+}
+
+.keypad-grid {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-5 { grid-template-columns: repeat(5, 1fr); }
+
+/* Key Button Component Styling */
+.key-btn {
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.7rem 0;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    overflow: hidden;
+    transition: transform 0.05s ease, background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.key-btn:active {
+    transform: scale(0.96);
+}
+
+.key-btn:focus-visible {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 2px var(--btn-accent-bg);
+}
+
+.key-num {
+    background: var(--btn-num-bg);
+    color: var(--btn-num-text);
+}
+.key-num:hover { background: var(--btn-num-hover); }
+
+.key-op {
+    background: var(--btn-op-bg);
+    color: var(--btn-op-text);
+}
+.key-op:hover { background: var(--btn-op-hover); }
+
+.key-func {
+    background: var(--btn-func-bg);
+    color: var(--btn-func-text);
+    font-size: 0.85rem;
+}
+.key-func:hover { background: var(--btn-func-hover); }
+
+.key-secondary {
+    background: var(--bg-surface-elevated);
+    color: var(--text-secondary);
+}
+
+.key-accent {
+    background: var(--btn-accent-bg);
+    color: var(--btn-accent-text);
+    font-weight: 700;
+}
+.key-accent:hover { background: var(--btn-accent-hover); }
+
+.key-danger {
+    background: var(--btn-danger-bg);
+    color: var(--btn-danger-text);
+}
+.key-danger:hover { background: var(--btn-danger-hover); }
+
+.col-span-2 { grid-column: span 2; }
+
+/* --------------------------------------------------------------------------
+   5. Side Panels (History & AI Suite)
+   -------------------------------------------------------------------------- */
+.side-panel {
+    width: 380px;
+    height: 100%;
+    background: var(--bg-surface-elevated);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+}
+
+.side-panel.open {
+    transform: translateX(0);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.panel-actions {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.icon-btn-sm {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.icon-btn-sm:hover {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+.icon-btn-sm.danger:hover {
+    background: var(--btn-danger-bg);
+    color: #fff;
+}
+
+.panel-search {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.panel-search input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    outline: none;
+}
+
+.panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* History Card */
+.history-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+}
+
+.history-card:hover {
+    border-color: var(--text-accent);
+}
+
+.history-expr {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    word-break: break-all;
+}
+
+.history-res {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: right;
+    margin-top: 0.25rem;
+}
+
+/* AI Panel Tabs & Components */
+.ai-tabs {
+    display: flex;
+    background: var(--bg-input);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ai-tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    padding: 8px 0;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.ai-tab-btn.active {
+    color: var(--text-accent);
+    border-bottom-color: var(--text-accent);
+}
+
+.ai-tab-content {
+    display: none;
+}
+
+.ai-tab-content.active {
+    display: block;
+}
+
+.ai-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 0.85rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.75rem;
+}
+
+.ai-intro {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.6rem;
+}
+
+.ai-output-box {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem;
+    font-size: 0.85rem;
+    min-height: 120px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.placeholder-text {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+}
+
+.ai-card input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 7px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+    outline: none;
+}
+
+.btn-primary {
+    background: var(--btn-accent-bg);
+    color: var(--btn-accent-text);
+    border: none;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover { background: var(--btn-accent-hover); }
+
+.btn-secondary {
+    background: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.btn-group {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.voice-input-row {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.voice-input-row input { margin-bottom: 0; }
+
+.sparkle { color: #ebcb8b; }
+.w-full { width: 100%; }
+.mt-2 { margin-top: 0.5rem; }
+
+/* Accordion & Dictionary Items */
+.formula-item, .dict-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.4rem;
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+}
+
+.formula-title, .dict-title {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+.formula-body, .dict-body {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.4rem;
+    display: none;
+}
+
+.formula-item.open .formula-body, .dict-item.open .dict-body {
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   6. Settings Modal & Backdrop
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-backdrop.hidden { 
+    display: none !important; 
+}
+
+.modal-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    width: 90%;
+    max-width: 420px;
+    box-shadow: var(--shadow-deep);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.setting-row select, .setting-row input[type="number"] {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   7. Micro-Animations & Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Ripple Click Effect Container */
+.ripple {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-anim 0.4s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-anim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Media Queries for Responsive Optimization */
+@media (max-width: 768px) {
+    body { padding: 0; }
+    .app-container {
+        height: 100vh;
+        max-height: none;
+        border-radius: 0;
+        border: none;
+    }
+    .calculator-app {
+        max-width: 100%;
+        padding: 0.75rem;
+    }
+    .side-panel {
+        width: 100%;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wild Quiz — Animal Trivia for Class 8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-badge">🐾</span>
+      <div>
+        <h1>Wild Quiz</h1>
+        <p class="tagline">Animal trivia for animal dummies</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- START SCREEN -->
+    <section id="screen-start" class="screen">
+      <div class="card intro-card">
+        <span class="stamp">field notebook</span>
+        <h2>Ready to test what you know about animals?</h2>
+        <p>
+          Lets see how well you know your animals.
+        </p>
+        <ul class="rules">
+          <li>Pick one answer per question</li>
+          <li>Tap <em>Next</em> to move on — you can't go back</li>
+          <li>See your ranger badge at the end</li>
+        </ul>
+        <button id="btn-start" class="btn btn-primary">Start the quiz</button>
+      </div>
+    </section>
+
+    <!-- QUIZ SCREEN -->
+    <section id="screen-quiz" class="screen hidden">
+      <div class="progress-wrap">
+        <div id="paw-trail" class="paw-trail" aria-hidden="true"></div>
+        <span id="progress-label" class="progress-label mono">Question 1 of 20</span>
+      </div>
+
+      <div class="card question-card">
+        <h2 id="question-text">Question text</h2>
+        <div id="options" class="options" role="group" aria-label="Answer options"></div>
+      </div>
+
+      <div class="quiz-actions">
+        <span id="feedback" class="feedback" aria-live="polite"></span>
+        <button id="btn-next" class="btn btn-primary" disabled>Next question</button>
+      </div>
+    </section>
+
+    <!-- RESULTS SCREEN -->
+    <section id="screen-results" class="screen hidden">
+      <div class="card results-card">
+        <span id="badge" class="stamp badge-stamp">ranger badge</span>
+        <h2 id="score-headline">You scored 0 / 20</h2>
+        <p id="score-message"></p>
+        <button id="btn-review-toggle" class="btn btn-ghost">Show answer review</button>
+        <button id="btn-restart" class="btn btn-primary">Play again</button>
+      </div>
+
+      <div id="review-list" class="review-list hidden"></div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Animal quiz bank</p>
+  </footer>
+
+</div>
+
+<script src="questions.js"></script>
+<script src="quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaCalc Pro - AI-Powered Scientific Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main Calculator Layout -->
+        <main class="calculator-app">
+            
+            <!-- Header Bar -->
+            <header class="app-header">
+                <div class="brand">
+                    <span class="brand-icon">∑</span>
+                    <span class="brand-name">NovaCalc <span>PRO</span></span>
+                </div>
+                <div class="header-controls">
+                    <button id="btn-toggle-history" class="icon-btn" title="Toggle History (Ctrl+H)" aria-label="Toggle History">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </button>
+                    <button id="btn-toggle-ai" class="icon-btn" title="Toggle AI Assistant (Ctrl+/)" aria-label="Toggle AI Assistant">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 12L2.5 7.5"/><path d="M12 12v10"/></svg>
+                    </button>
+                    <button id="btn-toggle-settings" class="icon-btn" title="Settings" aria-label="Settings">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Calculator Display Panel -->
+            <section class="display-panel" aria-live="polite">
+                <!-- Status Indicators Bar -->
+                <div class="status-bar">
+                    <span id="angle-mode-indicator" class="badge active" title="Click to toggle DEG/RAD">DEG</span>
+                    <span id="base-mode-indicator" class="badge">DEC</span>
+                    <span id="memory-indicator" class="badge hidden">MEM</span>
+                    <span id="ai-status-indicator" class="badge ai-badge">AI READY</span>
+                </div>
+
+                <!-- Live Expression Input Area -->
+                <div class="expression-wrapper">
+                    <input type="text" id="expression-input" class="expression-input" placeholder="0" autocomplete="off" spellcheck="false" aria-label="Mathematical Expression">
+                </div>
+
+                <!-- Result Display Area -->
+                <div class="result-wrapper">
+                    <span id="eval-preview" class="eval-preview"></span>
+                    <div id="result-display" class="result-display">0</div>
+                </div>
+
+                <!-- Live Smart Suggestions Ribbon -->
+                <div id="smart-suggestions" class="smart-suggestions-ribbon"></div>
+            </section>
+
+            <!-- Mode Switcher & Category Tabs -->
+            <nav class="mode-tabs" aria-label="Calculator Mode Tabs">
+                <button class="tab-btn active" data-tab="standard">Standard</button>
+                <button class="tab-btn" data-tab="scientific">Scientific</button>
+                <button class="tab-btn" data-tab="stats">Stats & Math</button>
+                <button class="tab-btn" data-tab="programmer">Programmer</button>
+            </nav>
+
+            <!-- Main Keypad Grid -->
+            <section class="keypad-container">
+                
+                <!-- Memory Bar -->
+                <div class="memory-bar">
+                    <button class="key-btn key-mem" data-action="mc" title="Clear Memory">MC</button>
+                    <button class="key-btn key-mem" data-action="mr" title="Recall Memory">MR</button>
+                    <button class="key-btn key-mem" data-action="ms" title="Store Memory">MS</button>
+                    <button class="key-btn key-mem" data-action="m-plus" title="Add to Memory">M+</button>
+                    <button class="key-btn key-mem" data-action="m-minus" title="Subtract from Memory">M-</button>
+                </div>
+
+                <!-- Dynamic Key Sections -->
+                
+                <!-- Programmer Panel (Hidden by default) -->
+                <div id="panel-programmer" class="key-panel hidden">
+                    <div class="keypad-grid grid-4">
+                        <button class="key-btn key-func" data-action="base" data-val="HEX">HEX</button>
+                        <button class="key-btn key-func" data-action="base" data-val="DEC">DEC</button>
+                        <button class="key-btn key-func" data-action="base" data-val="OCT">OCT</button>
+                        <button class="key-btn key-func" data-action="base" data-val="BIN">BIN</button>
+                        
+                        <button class="key-btn key-func" data-insert="AND">AND</button>
+                        <button class="key-btn key-func" data-insert="OR">OR</button>
+                        <button class="key-btn key-func" data-insert="XOR">XOR</button>
+                        <button class="key-btn key-func" data-insert="NOT">NOT</button>
+                        
+                        <button class="key-btn key-func" data-insert="<<">LSH</button>
+                        <button class="key-btn key-func" data-insert=">>">RSH</button>
+                        <button class="key-btn key-func" data-insert="mod">MOD</button>
+                        <button class="key-btn key-func" data-action="prime-check">isPrime</button>
+                    </div>
+                </div>
+
+                <!-- Stats & Advanced Math Panel (Hidden by default) -->
+                <div id="panel-stats" class="key-panel hidden">
+                    <div class="keypad-grid grid-5">
+                        <button class="key-btn key-func" data-insert="mean(">mean</button>
+                        <button class="key-btn key-func" data-insert="variance(">var</button>
+                        <button class="key-btn key-func" data-insert="stddev(">std</button>
+                        <button class="key-btn key-func" data-insert="nPr(">nPr</button>
+                        <button class="key-btn key-func" data-insert="nCr(">nCr</button>
+
+                        <button class="key-btn key-func" data-insert="gcd(">gcd</button>
+                        <button class="key-btn key-func" data-insert="lcm(">lcm</button>
+                        <button class="key-btn key-func" data-insert="factors(">factors</button>
+                        <button class="key-btn key-func" data-insert="min(">min</button>
+                        <button class="key-btn key-func" data-insert="max(">max</button>
+                    </div>
+                </div>
+
+                <!-- Scientific Keypad Panel -->
+                <div id="panel-scientific" class="key-panel">
+                    <div class="keypad-grid grid-5">
+                        <button class="key-btn key-func" id="btn-deg-rad" data-action="toggle-angle">DEG</button>
+                        <button class="key-btn key-func" data-insert="sin(">sin</button>
+                        <button class="key-btn key-func" data-insert="cos(">cos</button>
+                        <button class="key-btn key-func" data-insert="tan(">tan</button>
+                        <button class="key-btn key-func" data-insert="π">π</button>
+
+                        <button class="key-btn key-func" data-action="toggle-hyp">HYP</button>
+                        <button class="key-btn key-func" data-insert="asin(">asin</button>
+                        <button class="key-btn key-func" data-insert="acos(">acos</button>
+                        <button class="key-btn key-func" data-insert="atan(">atan</button>
+                        <button class="key-btn key-func" data-insert="e">e</button>
+
+                        <button class="key-btn key-func" data-insert="^">x^y</button>
+                        <button class="key-btn key-func" data-insert="^2">x²</button>
+                        <button class="key-btn key-func" data-insert="^3">x³</button>
+                        <button class="key-btn key-func" data-insert="sqrt(">√</button>
+                        <button class="key-btn key-func" data-insert="cbrt(">∛</button>
+
+                        <button class="key-btn key-func" data-insert="log(">log</button>
+                        <button class="key-btn key-func" data-insert="ln(">ln</button>
+                        <button class="key-btn key-func" data-insert="10^">10^x</button>
+                        <button class="key-btn key-func" data-insert="e^">e^x</button>
+                        <button class="key-btn key-func" data-insert="!">x!</button>
+                    </div>
+                </div>
+
+                <!-- Primary Number & Arithmetic Keypad Grid -->
+                <div class="keypad-grid grid-4 primary-grid">
+                    <button class="key-btn key-danger" data-action="clear">AC</button>
+                    <button class="key-btn key-secondary" data-action="backspace">⌫</button>
+                    <button class="key-btn key-secondary" data-insert="(">(</button>
+                    <button class="key-btn key-secondary" data-insert=")">)</button>
+
+                    <button class="key-btn key-num" data-insert="7">7</button>
+                    <button class="key-btn key-num" data-insert="8">8</button>
+                    <button class="key-btn key-num" data-insert="9">9</button>
+                    <button class="key-btn key-op" data-insert="÷">÷</button>
+
+                    <button class="key-btn key-num" data-insert="4">4</button>
+                    <button class="key-btn key-num" data-insert="5">5</button>
+                    <button class="key-btn key-num" data-insert="6">6</button>
+                    <button class="key-btn key-op" data-insert="×">×</button>
+
+                    <button class="key-btn key-num" data-insert="1">1</button>
+                    <button class="key-btn key-num" data-insert="2">2</button>
+                    <button class="key-btn key-num" data-insert="3">3</button>
+                    <button class="key-btn key-op" data-insert="-">-</button>
+
+                    <button class="key-btn key-num" data-insert="0">0</button>
+                    <button class="key-btn key-num" data-insert=".">.</button>
+                    <button class="key-btn key-secondary" data-insert="Ans">ANS</button>
+                    <button class="key-btn key-op" data-insert="+">+</button>
+
+                    <button class="key-btn key-secondary" data-insert="%">%</button>
+                    <button class="key-btn key-secondary" data-action="toggle-sign">±</button>
+                    <button class="key-btn key-accent col-span-2" data-action="calculate">=</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Slide-out Side History Panel -->
+        <aside id="history-panel" class="side-panel history-panel" aria-label="Calculation History">
+            <div class="panel-header">
+                <h3>Calculation History</h3>
+                <div class="panel-actions">
+                    <button id="btn-export-history" class="icon-btn-sm" title="Export History">Export</button>
+                    <button id="btn-clear-history" class="icon-btn-sm danger" title="Clear History">Clear</button>
+                    <button id="btn-close-history" class="icon-btn-sm" aria-label="Close History">✕</button>
+                </div>
+            </div>
+            <div class="panel-search">
+                <input type="text" id="history-search" placeholder="Search calculations..." autocomplete="off">
+            </div>
+            <div id="history-list" class="panel-content history-list">
+                <!-- History Items Injected Dynamically -->
+            </div>
+        </aside>
+
+        <!-- Slide-out Side AI Assistant & Tools Panel -->
+        <aside id="ai-panel" class="side-panel ai-panel" aria-label="AI Math Assistant">
+            <div class="panel-header">
+                <h3><span class="sparkle">✦</span> AI Math Suite</h3>
+                <button id="btn-close-ai" class="icon-btn-sm" aria-label="Close AI Suite">✕</button>
+            </div>
+
+            <!-- AI Navigation Sub-Tabs -->
+            <div class="ai-tabs">
+                <button class="ai-tab-btn active" data-aitab="explain">Explain</button>
+                <button class="ai-tab-btn" data-aitab="solver">Solver</button>
+                <button class="ai-tab-btn" data-aitab="converter">Units</button>
+                <button class="ai-tab-btn" data-aitab="formulas">Formulas</button>
+                <button class="ai-tab-btn" data-aitab="dict">Dict</button>
+            </div>
+
+            <div class="panel-content ai-content">
+                
+                <!-- 1. Step-by-Step Explanation Tab -->
+                <div id="aitab-explain" class="ai-tab-content active">
+                    <div class="ai-card">
+                        <p class="ai-intro">Explain the step-by-step breakdown of your current expression.</p>
+                        <button id="btn-ai-explain" class="btn-primary w-full">Explain Current Calculation</button>
+                    </div>
+                    <div id="ai-explanation-output" class="ai-output-box">
+                        <span class="placeholder-text">Click above to generate a breakdown of your calculation.</span>
+                    </div>
+                </div>
+
+                <!-- 2. Smart Equation Solver & Simplifier -->
+                <div id="aitab-solver" class="ai-tab-content">
+                    <div class="ai-card">
+                        <label for="solver-input" class="field-label">Equation or Expression:</label>
+                        <input type="text" id="solver-input" placeholder="e.g., 2x + 5 = 15 or 3x + 2x - 4" spellcheck="false">
+                        <div class="btn-group">
+                            <button id="btn-solve-eq" class="btn-primary">Solve Equation</button>
+                            <button id="btn-simplify-eq" class="btn-secondary">Simplify</button>
+                        </div>
+                    </div>
+                    <div id="ai-solver-output" class="ai-output-box"></div>
+                </div>
+
+                <!-- 3. Natural Language Unit Converter -->
+                <div id="aitab-converter" class="ai-tab-content">
+                    <div class="ai-card">
+                        <label for="converter-input" class="field-label">Natural Language Converter:</label>
+                        <div class="voice-input-row">
+                            <input type="text" id="converter-input" placeholder="e.g., 10 km to miles, 100 F to C" spellcheck="false">
+                            <button id="btn-voice-convert" class="icon-btn" title="Speak conversion">🎤</button>
+                        </div>
+                        <button id="btn-convert" class="btn-primary w-full mt-2">Convert</button>
+                    </div>
+                    <div id="ai-converter-output" class="ai-output-box"></div>
+                </div>
+
+                <!-- 4. Interactive Formula Library -->
+                <div id="aitab-formulas" class="ai-tab-content">
+                    <input type="text" id="formula-search" placeholder="Search formulas (e.g., circle, quadratic)...">
+                    <div id="formula-list" class="formula-accordion-list mt-2">
+                        <!-- Formula Items Injected Dynamically -->
+                    </div>
+                </div>
+
+                <!-- 5. Math Dictionary & Concepts -->
+                <div id="aitab-dict" class="ai-tab-content">
+                    <input type="text" id="dict-search" placeholder="Search concept (e.g., Matrix, Derivative, Factorial)...">
+                    <div id="dict-output" class="dict-view mt-2">
+                        <!-- Dictionary Definitions Injected Dynamically -->
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Settings Modal Container -->
+        <!-- Settings Modal Container -->
+        <div id="settings-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h3 id="settings-title">Calculator Settings</h3>
+                    <button id="btn-close-settings" class="icon-btn-sm" aria-label="Close Settings">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-row">
+                        <label for="setting-theme">Theme Profile</label>
+                        <select id="setting-theme">
+                            <option value="dark">Dark Charcoal (Default)</option>
+                            <option value="midnight">Midnight OLED Blue</option>
+                            <option value="light">High Contrast Light</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-row">
+                        <label for="setting-precision">Decimal Precision</label>
+                        <input type="number" id="setting-precision" min="0" max="12" value="6">
+                    </div>
+
+                    <div class="setting-row">
+                        <label for="setting-separators">Thousands Separator</label>
+                        <input type="checkbox" id="setting-separators" checked>
+                    </div>
+
+                    <div class="setting-row">
+                        <label for="setting-sci-threshold">Auto Scientific Notation</label>
+                        <input type="checkbox" id="setting-sci-threshold" checked>
+                    </div>
+
+                    <div class="setting-row">
+                        <label for="setting-sound">Audio Feedback</label>
+                        <input type="checkbox" id="setting-sound">
+                    </div>
+
+                    <div class="setting-row">
+                        <label for="setting-autocopy">Auto-Copy Answer to Clipboard</label>
+                        <input type="checkbox" id="setting-autocopy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End of app-container -->
+    <script src="script.js" defer></script>
+</body>
+</html>
+    

@@ -1,0 +1,333 @@
+:root{
+  --jungle:      #1F5D45;
+  --jungle-deep: #143D2D;
+  --leaf:        #4C9A6B;
+  --sun:         #F5B942;
+  --coral:       #F2724A;
+  --sky:         #4FA6D8;
+  --cream:       #FFF8EC;
+  --paper:       #FFFFFF;
+  --ink:         #16241C;
+  --ink-soft:    #4A5A50;
+  --line:        #E4DCC8;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(76,154,107,.18), transparent 40%),
+    radial-gradient(circle at 90% 88%, rgba(245,185,66,.18), transparent 45%),
+    var(--cream);
+  color:var(--ink);
+  font-family:'Nunito', sans-serif;
+}
+
+.mono{ font-family:'Space Mono', monospace; }
+
+.hidden{ display:none !important; }
+
+.app{
+  max-width:720px;
+  margin:0 auto;
+  padding:28px 20px 60px;
+}
+
+/* ---------- HEADER ---------- */
+
+.app-header{ margin-bottom:28px; }
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.brand-badge{
+  font-size:34px;
+  background:var(--jungle);
+  width:60px; height:60px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 18px -6px rgba(20,61,45,.5);
+}
+
+h1{
+  font-family:'Fredoka', sans-serif;
+  font-weight:700;
+  font-size:32px;
+  margin:0;
+  color:var(--jungle-deep);
+}
+
+.tagline{
+  margin:2px 0 0;
+  color:var(--ink-soft);
+  font-size:14.5px;
+}
+
+/* ---------- CARD ---------- */
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:32px;
+  box-shadow:0 16px 36px -22px rgba(20,61,45,.35);
+  position:relative;
+}
+
+.stamp{
+  display:inline-block;
+  font-family:'Space Mono', monospace;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--jungle);
+  border:1.5px dashed var(--jungle);
+  border-radius:20px;
+  padding:5px 12px;
+  margin-bottom:16px;
+  transform:rotate(-2deg);
+}
+
+.intro-card h2{
+  font-family:'Fredoka', sans-serif;
+  font-size:24px;
+  margin:0 0 12px;
+  color:var(--ink);
+}
+
+.intro-card p{
+  color:var(--ink-soft);
+  font-size:15.5px;
+  line-height:1.6;
+}
+
+.rules{
+  margin:16px 0 26px;
+  padding-left:20px;
+  color:var(--ink-soft);
+  font-size:14.5px;
+  line-height:1.9;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.btn{
+  font-family:'Fredoka', sans-serif;
+  font-weight:600;
+  font-size:16px;
+  border:none;
+  border-radius:14px;
+  padding:14px 26px;
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+.btn-primary{
+  background:var(--coral);
+  color:var(--cream);
+  box-shadow:0 10px 20px -10px rgba(242,114,74,.65);
+}
+
+.btn-primary:hover:not(:disabled){ transform:translateY(-2px); }
+
+.btn-primary:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
+.btn-ghost{
+  background:transparent;
+  color:var(--jungle);
+  border:2px solid var(--jungle);
+  margin-right:12px;
+}
+
+.btn-ghost:hover{ background:rgba(31,93,69,.08); }
+
+/* ---------- PROGRESS: PAW TRAIL (signature element) ---------- */
+
+.progress-wrap{ margin-bottom:18px; }
+
+.paw-trail{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:8px;
+}
+
+.paw{
+  font-size:18px;
+  opacity:.28;
+  filter:grayscale(1);
+  transition:opacity .2s ease, filter .2s ease, transform .2s ease;
+}
+
+.paw.filled{
+  opacity:1;
+  filter:grayscale(0);
+}
+
+.paw.current{
+  opacity:1;
+  filter:grayscale(0);
+  transform:scale(1.25);
+}
+
+.progress-label{
+  font-size:13px;
+  color:var(--ink-soft);
+}
+
+/* ---------- QUESTION CARD ---------- */
+
+.question-card h2{
+  font-family:'Fredoka', sans-serif;
+  font-size:21px;
+  line-height:1.4;
+  margin:0 0 22px;
+  color:var(--ink);
+}
+
+.options{
+  display:grid;
+  gap:12px;
+}
+
+.option-btn{
+  text-align:left;
+  font-family:'Nunito', sans-serif;
+  font-weight:700;
+  font-size:15.5px;
+  color:var(--ink);
+  background:var(--cream);
+  border:2px solid var(--line);
+  border-radius:14px;
+  padding:14px 18px;
+  cursor:pointer;
+  transition:border-color .15s ease, background .15s ease, transform .1s ease;
+}
+
+.option-btn:hover:not(:disabled){
+  border-color:var(--sky);
+  transform:translateY(-1px);
+}
+
+.option-btn:disabled{ cursor:not-allowed; }
+
+.option-btn.correct{
+  border-color:var(--leaf);
+  background:rgba(76,154,107,.16);
+}
+
+.option-btn.incorrect{
+  border-color:var(--coral);
+  background:rgba(242,114,74,.14);
+}
+
+/* ---------- QUIZ ACTIONS ---------- */
+
+.quiz-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.feedback{
+  font-weight:700;
+  font-size:14.5px;
+}
+
+.feedback-correct{ color:var(--jungle); }
+.feedback-incorrect{ color:var(--coral); }
+
+/* ---------- RESULTS ---------- */
+
+.results-card{ text-align:center; }
+
+.badge-stamp{
+  border-color:var(--coral);
+  color:var(--coral);
+}
+
+.results-card h2{
+  font-family:'Fredoka', sans-serif;
+  font-size:26px;
+  margin:0 0 8px;
+}
+
+.results-card p{
+  color:var(--ink-soft);
+  font-size:15.5px;
+  margin:0 0 24px;
+}
+
+.review-list{
+  margin-top:20px;
+  display:grid;
+  gap:12px;
+}
+
+.review-item{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-left:5px solid var(--leaf);
+  border-radius:12px;
+  padding:14px 18px;
+  text-align:left;
+}
+
+.review-item.review-incorrect{ border-left-color:var(--coral); }
+
+.review-q{
+  margin:0 0 6px;
+  font-weight:700;
+  font-size:14.5px;
+}
+
+.review-a{
+  margin:0;
+  font-size:13.5px;
+  color:var(--ink-soft);
+}
+
+/* ---------- FOOTER ---------- */
+
+.app-footer{
+  text-align:center;
+  margin-top:40px;
+  font-size:12.5px;
+  color:var(--ink-soft);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width:520px){
+  .card{ padding:24px 20px; }
+  h1{ font-size:26px; }
+  .brand-badge{ width:50px; height:50px; font-size:26px; }
+  .quiz-actions{ flex-direction:column; align-items:stretch; }
+  .quiz-actions .btn{ width:100%; }
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+
+button:focus-visible{
+  outline:3px solid var(--sky);
+  outline-offset:2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .btn-primary:hover:not(:disabled){ transform:none; }
+  .option-btn:hover:not(:disabled){ transform:none; }
+  .paw{ transition:none; }
+}
