@@ -274,7 +274,6 @@ body {
 /* Expression Input */
 .expression-wrapper {
     width: 100%;
-    overflow-x: auto;
 }
 
 .expression-input {
@@ -309,9 +308,11 @@ body {
     font-size: 2.2rem;
     font-weight: 600;
     color: var(--text-primary);
-    line-height: 1.1;
+    line-height: 1.3;
+    padding: 2px 0;
     max-width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
     word-break: break-all;
     transition: font-size var(--transition-fast);
 }
@@ -319,9 +320,11 @@ body {
 /* Smart Suggestions Ribbon */
 .smart-suggestions-ribbon {
     display: flex;
+    align-items: center;
     gap: 0.35rem;
     overflow-x: auto;
-    padding-top: 0.5rem;
+    overflow-y: hidden;
+    padding: 0.5rem 0 0.15rem;
     margin-top: 0.25rem;
     border-top: 1px dashed var(--border-color);
 }
