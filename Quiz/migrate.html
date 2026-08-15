@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Migrate questions to Firestore</title>
+<style>
+  body{ font-family: monospace; max-width:700px; margin:40px auto; padding:0 20px; line-height:1.6; }
+  button{ font-size:16px; padding:12px 20px; cursor:pointer; }
+  button:disabled{ opacity:.5; cursor:not-allowed; }
+  #log{ white-space:pre-wrap; background:#111; color:#8f8; padding:16px; margin-top:20px; border-radius:8px; max-height:400px; overflow-y:auto; }
+</style>
+</head>
+<body>
+  <h1>Migrate QUESTION_BANK → Firestore</h1>
+  <p>
+    This page reads the 100 questions from <code>questions.js</code> and
+    uploads each one as a document in the Firestore <code>questions</code>
+    collection. Run this <strong>once</strong>, confirm the documents show
+    up in the Firebase console, then delete this page (or at least stop
+    using it) so you don't accidentally duplicate the data.
+  </p>
+  <p><strong>Before clicking the button:</strong> make sure your Firestore
+    security rules temporarily allow writes (see the README/instructions).
+  </p>
+  <button id="btn-migrate">Upload questions to Firestore</button>
+  <div id="log"></div>
+
+  <script src="questions.js"></script>
+  <script type="module" src="migrate.js"></script>
+</body>
+</html>

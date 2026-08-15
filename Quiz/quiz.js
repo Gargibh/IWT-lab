@@ -1,3 +1,5 @@
+import { getQuestions } from "./firestore.js";
+
 const TOTAL_QUESTIONS = 20;
 
 // -- Elements --
@@ -54,21 +56,36 @@ function updatePawTrail() {
   });
 }
 
-function startQuiz() {
-  const chosenQuestions = shuffle(QUESTION_BANK).slice(0, TOTAL_QUESTIONS);
-  roundQuestions = chosenQuestions.map((item) => ({
-    q: item.q,
-    options: shuffle(item.o),
-    correct: item.a,
-  }));
+async function startQuiz() {
+  btnStart.disabled = true;
+  const originalLabel = btnStart.textContent;
+  btnStart.textContent = "Loading questions...";
 
-  currentIndex = 0;
-  score = 0;
-  userAnswers = [];
+  try {
+    const bank = await getQuestions();
+    const chosenQuestions = shuffle(bank).slice(0, TOTAL_QUESTIONS);
+    roundQuestions = chosenQuestions.map((item) => ({
+      q: item.q,
+      options: shuffle(item.o),
+      correct: item.a,
+    }));
 
-  buildPawTrail();
-  showScreen(screenQuiz);
-  renderQuestion();
+    currentIndex = 0;
+    score = 0;
+    userAnswers = [];
+
+    buildPawTrail();
+    showScreen(screenQuiz);
+    renderQuestion();
+  } catch (err) {
+    console.error("Failed to load questions from Firestore:", err);
+    alert(
+      "Couldn't load questions from the database. Check your internet connection, or check the console for details."
+    );
+  } finally {
+    btnStart.disabled = false;
+    btnStart.textContent = originalLabel;
+  }
 }
 
 function renderQuestion() {
