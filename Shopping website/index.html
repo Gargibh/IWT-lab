@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember & Oak — Unisex Perfumery</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-row">
+    <a href="index.html" class="logo">Ember &amp; Oak <span>Perfumery</span></a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="catalog.html">Shop All</a>
+      <a href="index.html#bestsellers">Bestsellers</a>
+      <a href="index.html#quiz">Find Your Scent</a>
+      <a href="index.html#reviews">Reviews</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishlistNavBtn" aria-label="Wishlist">♡<span class="badge" id="wishlistCount" style="display:none;">0</span></button>
+      <button class="icon-btn" id="cartNavBtn" aria-label="Cart">🛍<span class="badge" id="cartCount" style="display:none;">0</span></button>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">The Confection Collection</div>
+        <h1>Perfume that smells<br>like <em>dessert</em>, worn<br>like skin.</h1>
+        <p>Four gourmand fragrances built around caramel, vanilla smoke, honeyed fig, and toasted sugar — unisex, and stronger than your last bakery memory.</p>
+        <div class="hero-cta">
+          <a href="catalog.html" class="btn btn-primary">Shop The Collection</a>
+          <a href="#quiz" class="btn btn-outline">Find Your Scent</a>
+        </div>
+      </div>
+      <div class="hero-figure">
+        <img src="images/Hero.png" alt="Dessert-themed perfume collection — placeholder, swap for a warm styled photo of bottles with caramel, vanilla pods, and macarons">
+        <div class="tag">04 SCENTS — LIMITED BATCH</div>
+      </div>
+    </div>
+    <div class="hero-note-strip container" style="padding-left:0; padding-right:0;">
+      <span>Salted Caramel</span><span>Vanilla Smoke</span><span>Honey Fig</span><span>Brûlée Sugar</span><span>Tonka Bean</span><span>Warm Amber</span>
+    </div>
+  </div>
+</section>
+
+<!-- BESTSELLERS -->
+<section id="bestsellers">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Most Loved</div>
+        <h2>Bestsellers, across every mood</h2>
+      </div>
+      <p>Four signatures, four directions — floral, spiced, woody, and elemental. Start here if you're not sure where to begin.</p>
+    </div>
+    <div class="grid-4" id="bestsellerGrid"></div>
+  </div>
+</section>
+
+<!-- SEASONAL + NEW ARRIVALS -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Right Now</div>
+        <h2>Seasonal edit</h2>
+      </div>
+      <p>Two capsules built for the season ahead — one warm and enveloping, one bright and citrus-lit.</p>
+    </div>
+    <div class="split-banner">
+      <div class="split-panel">
+        <img src="images/autumn.png" alt="Autumn spice capsule">
+        <div class="split-panel-copy">
+          <div class="eyebrow">Autumn Capsule</div>
+          <h3>Spiced &amp; Smoked</h3>
+          <p>Clove, cardamom, and fireside amber for the first cold week.</p>
+          <a href="catalog.html?filter=spicy" class="btn btn-outline" style="border-color:rgba(243,225,211,0.5); color:var(--cream);">Shop Autumn</a>
+        </div>
+      </div>
+      <div class="split-panel">
+        <img src="images/citrus.png" alt="Citrus bloom capsule">
+        <div class="split-panel-copy">
+          <div class="eyebrow">Transitional Capsule</div>
+          <h3>Citrus &amp; Bloom</h3>
+          <p>Bergamot and white florals for the days that can't decide on weather.</p>
+          <a href="catalog.html?filter=floral" class="btn btn-outline" style="border-color:rgba(243,225,211,0.5); color:var(--cream);">Shop Bloom</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Just In</div>
+        <h2>New arrivals</h2>
+      </div>
+      <p>Freshly landed — scroll to browse.</p>
+    </div>
+    <div class="arrivals-strip" id="arrivalsStrip"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="container">
+    <div class="quiz-section">
+      <div class="quiz-inner">
+        <div class="eyebrow">60-Second Quiz</div>
+        <h2>Find your scent</h2>
+        <p>Answer three quick questions and we'll match you to a fragrance family — and a bottle to start with.</p>
+
+        <div class="quiz-progress" id="quizProgress">
+          <span></span><span></span><span></span>
+        </div>
+
+        <div class="quiz-step active" data-step="1">
+          <div class="quiz-question">Question 1 of 3 — Pick a setting</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-family="gourmand">A candlelit dinner that runs long</button>
+            <button class="quiz-option" data-family="floral">A garden the morning after rain</button>
+            <button class="quiz-option" data-family="woody">A cabin with the fire just lit</button>
+            <button class="quiz-option" data-family="elemental">A cliffside walk at low tide</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="2">
+          <div class="quiz-question">Question 2 of 3 — Pick a texture</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-family="gourmand">Soft, sweet, a little indulgent</button>
+            <button class="quiz-option" data-family="floral">Light, powdery, effortless</button>
+            <button class="quiz-option" data-family="woody">Dry, grounded, a bit smoky</button>
+            <button class="quiz-option" data-family="elemental">Cool, clean, mineral</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="3">
+          <div class="quiz-question">Question 3 of 3 — Pick an hour</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-family="gourmand">10pm</button>
+            <button class="quiz-option" data-family="floral">9am</button>
+            <button class="quiz-option" data-family="woody">6pm</button>
+            <button class="quiz-option" data-family="elemental">Noon</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="result" id="quizResultStep">
+          <div class="quiz-question">Your match</div>
+          <div class="quiz-result" id="quizResult"></div>
+          <button class="quiz-restart" id="quizRestart">↻ Retake the quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Word Of Mouth</div>
+        <h2>What people are wearing</h2>
+      </div>
+      <p>Unfiltered, from customers who bought and wore.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">Salted Caramel Skin is the first perfume my partner has ever asked to borrow. It doesn't read as "sweet" so much as warm.</p>
+        <div class="review-person">
+          <div class="review-avatar">R</div>
+          <div><strong>Renu K.</strong><span>Verified buyer — Bloom &amp; Bone, Salted Caramel Skin</span></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">Cedar & Smoke lasted through a 9-hour flight. Compliments from three strangers, which has never happened with a fragrance before.</p>
+        <div class="review-person">
+          <div class="review-avatar">A</div>
+          <div><strong>Aravind S.</strong><span>Verified buyer — Cedar &amp; Smoke</span></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-quote">Took the quiz half-convinced it'd be generic. Got matched to Salt &amp; Ash and it's genuinely unlike anything else I own.</p>
+        <div class="review-person">
+          <div class="review-avatar">M</div>
+          <div><strong>Meera J.</strong><span>Verified buyer — Salt &amp; Ash</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">Ember &amp; Oak</div>
+        <p class="desc">Unisex perfumery built around real fragrance families, not marketing categories. Made to be shared.</p>
+        <div class="footer-form">
+          <input type="email" placeholder="Your email">
+          <button>Join</button>
+        </div>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="catalog.html">All Perfumes</a></li>
+          <li><a href="index.html#bestsellers">Bestsellers</a></li>
+          <li><a href="catalog.html?filter=new">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Ingredients</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Find Your Scent</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ember & Oak Perfumery</span>
+      <span>Product images shown are placeholders</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>Your Bag</h3>
+    <button class="cart-close" id="cartCloseBtn">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-subtotal-row"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+    <button class="btn btn-primary btn-full">Checkout</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script src="products.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
