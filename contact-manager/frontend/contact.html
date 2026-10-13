@@ -1,0 +1,301 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details</title>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-bar">
+
+        <div class="brand">
+            <div class="brand-icon">☎</div>
+            <h1>Contact Manager</h1>
+        </div>
+
+        <a href="index.html" class="icon-button">
+            🏠
+        </a>
+
+    </header>
+
+
+    <!-- Main Contact Card -->
+    <main class="contact-page">
+
+        <section class="profile-card">
+
+            <div class="profile-top">
+
+                <div class="profile-avatar">
+                    👤
+                </div>
+
+                <div class="profile-info">
+
+                    <h2></h2>
+
+                    <div class="tag-row">
+
+                        <span class="category-tag">
+                        </span>
+
+                        <span class="company-pill">
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Contact Information -->
+            <div class="contact-information">
+
+                <div class="info-item"></div>
+
+                <div class="info-item"></div>
+
+                <div class="info-item"></div>
+
+            </div>
+
+
+            <hr>
+
+
+            <!-- Notes -->
+            <section class="notes-box">
+
+                <h3>Notes</h3>
+
+                <p></p>
+
+            </section>
+
+
+            <!-- Actions -->
+            <div class="profile-actions">
+
+                <button
+                    class="secondary-button"
+                    id="openEditModal"
+                    type="button"
+                >
+                    ✏ Edit
+                </button>
+
+                <button
+                    class="danger-button"
+                    id="openDeleteModal"
+                    type="button"
+                >
+                    🗑 Delete
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= EDIT CONTACT MODAL ================= -->
+
+    <section
+        class="modal-overlay hidden"
+        id="editModal"
+    >
+
+        <div class="toy-modal">
+
+            <button
+                class="modal-close"
+                id="closeEditModal"
+                type="button"
+            >
+                ✕
+            </button>
+
+            <h2>Edit Contact</h2>
+
+
+            <form id="editContactForm">
+
+                <label>
+                    Name *
+                    <input
+                        name="name"
+                        type="text"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Phone Number *
+                    <input
+                        name="phone"
+                        type="tel"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Email *
+                    <input
+                        name="email"
+                        type="email"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Company
+                    <input
+                        name="company"
+                        type="text"
+                    >
+                </label>
+
+
+                <label>
+                    Category
+
+                    <select name="category">
+
+                        <option value="Friend">
+                            Friend
+                        </option>
+
+                        <option value="Family">
+                            Family
+                        </option>
+
+                        <option value="Work">
+                            Work
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+                    Notes
+
+                    <textarea
+                        name="notes"
+                        rows="4"
+                    ></textarea>
+
+                </label>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        class="secondary-button"
+                        type="button"
+                        id="cancelEdit"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        class="primary-button"
+                        type="submit"
+                    >
+                        Save
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DELETE MODAL ================= -->
+
+    <section
+        class="modal-overlay hidden"
+        id="deleteModal"
+    >
+
+        <div class="delete-modal">
+
+            <div class="warning-icon">
+                ⚠
+            </div>
+
+            <h2>Delete Contact?</h2>
+
+            <p>
+                Are you sure you want to delete
+                <strong id="deleteContactName"></strong>?
+            </p>
+
+            <div class="modal-actions">
+
+                <button
+                    class="secondary-button"
+                    id="cancelDelete"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    class="danger-button"
+                    id="confirmDelete"
+                    type="button"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Success Toast -->
+
+    <div class="toast hidden"></div>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/toast.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/contact.js"></script>
+
+</body>
+</html>
+```

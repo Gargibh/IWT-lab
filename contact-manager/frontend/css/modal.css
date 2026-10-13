@@ -1,0 +1,394 @@
+/* ==========================================================
+   MODALS
+   Retro Tactile Toy Pop-Up Windows
+   ========================================================== */
+
+/* ==========================================================
+   OVERLAY
+   ========================================================== */
+
+.modal-overlay {
+
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(28, 52, 50, 0.35);
+    backdrop-filter: blur(6px);
+
+    z-index: 999;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition: opacity .25s ease;
+}
+
+/* Hidden State */
+
+.modal-overlay.hidden {
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ==========================================================
+   MAIN TOY MODAL
+   Used for Add/Edit Contact
+   ========================================================== */
+
+.toy-modal {
+
+    position: relative;
+
+    width: 100%;
+    max-width: var(--modal-width);
+
+    background: var(--gradient-modal);
+
+    border: 5px solid var(--teal-300);
+    border-radius: var(--modal-radius);
+
+    padding: 34px 28px 28px;
+
+    box-shadow:
+        var(--shadow-modal),
+        inset 0 5px 0 rgba(255,255,255,.8),
+        inset 0 -6px 10px rgba(0,0,0,.05);
+
+    animation: modalPop .35s ease;
+}
+
+/* Decorative toy screws */
+
+.toy-modal::before,
+.toy-modal::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        180deg,
+        #FFF8EA,
+        #E8C36D
+    );
+
+    border: 2px solid rgba(46,156,149,.22);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.8),
+        0 2px 3px rgba(0,0,0,.08);
+}
+
+.toy-modal::before {
+    top: 18px;
+    left: 18px;
+}
+
+.toy-modal::after {
+    top: 18px;
+    right: 18px;
+}
+
+/* ==========================================================
+   MODAL TITLE
+   ========================================================== */
+
+.toy-modal h2 {
+
+    text-align: center;
+
+    color: var(--teal-500);
+
+    font-size: 1.8rem;
+    font-weight: var(--weight-heavy);
+
+    margin-bottom: 28px;
+}
+
+/* ==========================================================
+   MODAL FORM
+   ========================================================== */
+
+.toy-modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.toy-modal label {
+    font-size: .95rem;
+    color: var(--text-dark);
+}
+
+/* ==========================================================
+   CLOSE BUTTON
+   ========================================================== */
+
+.modal-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+}
+
+/* ==========================================================
+   ACTION BUTTONS
+   ========================================================== */
+
+.modal-actions {
+
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    margin-top: 12px;
+}
+
+.modal-actions button {
+    flex: 1;
+}
+
+/* ==========================================================
+   DELETE CONFIRMATION MODAL
+   ========================================================== */
+
+.delete-modal {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+
+    background: var(--gradient-card);
+
+    border: 5px solid var(--danger);
+
+    border-radius: 34px;
+
+    padding: 36px 28px 30px;
+
+    text-align: center;
+
+    box-shadow:
+        var(--shadow-modal),
+        inset 0 4px 0 rgba(255,255,255,.75);
+
+    animation: modalPop .35s ease;
+}
+
+/* Decorative screws */
+
+.delete-modal::before,
+.delete-modal::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        180deg,
+        #FFF8EA,
+        #E8C36D
+    );
+
+    border: 2px solid rgba(231,111,81,.25);
+}
+
+.delete-modal::before {
+    top: 18px;
+    left: 18px;
+}
+
+.delete-modal::after {
+    top: 18px;
+    right: 18px;
+}
+
+/* ==========================================================
+   WARNING ICON
+   ========================================================== */
+
+.warning-icon {
+
+    width: 84px;
+    height: 84px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        180deg,
+        #FFD979,
+        #F4B53F
+    );
+
+    border: 5px solid var(--camel-400);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2.4rem;
+
+    box-shadow:
+        inset 0 3px 0 rgba(255,255,255,.7),
+        0 6px 0 #A36A1D,
+        0 12px 16px rgba(170,120,30,.2);
+}
+
+.delete-modal h2 {
+
+    color: var(--danger-dark);
+
+    margin-bottom: 12px;
+}
+
+.delete-modal p {
+
+    color: var(--text-medium);
+
+    line-height: 1.6;
+
+    margin-bottom: 28px;
+}
+
+.delete-modal strong {
+    color: var(--text-dark);
+}
+
+/* ==========================================================
+   SUCCESS TOAST
+   ========================================================== */
+
+.toast {
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 16px 22px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        180deg,
+        #66C48B,
+        #42A56D
+    );
+
+    border: 4px solid var(--success-dark);
+
+    color: white;
+
+    font-weight: var(--weight-bold);
+
+    box-shadow:
+        0 6px 0 #2D7A4D,
+        0 14px 20px rgba(44,110,72,.22);
+
+    animation: toastSlide .4s ease;
+}
+
+.toast.hidden {
+    display: none;
+}
+
+/* ==========================================================
+   SMALL CONFIRMATION MODAL VARIANT
+   ========================================================== */
+
+.confirmation-modal {
+
+    background: var(--gradient-card);
+
+    border: 5px solid var(--teal-300);
+
+    border-radius: 30px;
+
+    padding: 28px;
+
+    max-width: 360px;
+    width: 100%;
+
+    text-align: center;
+
+    box-shadow: var(--shadow-modal);
+}
+
+.confirmation-modal h3 {
+    margin-bottom: 12px;
+    color: var(--teal-500);
+}
+
+.confirmation-modal p {
+    margin-bottom: 22px;
+}
+
+/* ==========================================================
+   MODAL DIVIDER
+   ========================================================== */
+
+.modal-divider {
+
+    height: 3px;
+    border-radius: 999px;
+
+    background: rgba(46,156,149,.2);
+
+    margin: 18px 0;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+    .toy-modal {
+        padding: 28px 20px 22px;
+        border-radius: 28px;
+    }
+
+    .toy-modal h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .delete-modal {
+        padding: 28px 20px;
+        border-radius: 28px;
+    }
+
+    .warning-icon {
+        width: 72px;
+        height: 72px;
+        font-size: 2rem;
+    }
+
+    .modal-close {
+        top: -14px;
+        right: -14px;
+    }
+
+}

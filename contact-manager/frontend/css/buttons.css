@@ -1,0 +1,449 @@
+/* ==========================================================
+   BUTTONS
+   Retro Plastic / Clicky Toy Style
+   ========================================================== */
+
+/* ---------- Base Button ---------- */
+
+button {
+    font-family: var(--font-main);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    outline: none;
+}
+
+/* Shared tactile button style */
+
+.primary-button,
+.secondary-button,
+.danger-button,
+.filter-pill,
+.icon-button,
+.add-contact-button {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: var(--button-height);
+    padding: 14px 26px;
+
+    border-radius: var(--button-radius);
+    border: var(--border-thick) solid transparent;
+
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+
+    user-select: none;
+
+    position: relative;
+
+    box-shadow: var(--shadow-button);
+
+    transform: translateY(0);
+}
+
+/* Glossy plastic highlight */
+
+.primary-button::before,
+.secondary-button::before,
+.danger-button::before,
+.filter-pill::before,
+.icon-button::before,
+.add-contact-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 4px;
+    left: 6px;
+    right: 6px;
+
+    height: 40%;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.55),
+        rgba(255,255,255,0)
+    );
+
+    pointer-events: none;
+}
+
+/* ---------- Hover ---------- */
+
+.primary-button:hover,
+.secondary-button:hover,
+.danger-button:hover,
+.filter-pill:hover,
+.icon-button:hover,
+.add-contact-button:hover {
+
+    transform: translateY(-2px) scale(1.02);
+
+    box-shadow: var(--shadow-button-hover);
+}
+
+/* ---------- Press Animation ---------- */
+
+.primary-button:active,
+.secondary-button:active,
+.danger-button:active,
+.filter-pill:active,
+.icon-button:active,
+.add-contact-button:active {
+
+    transform: translateY(5px) scale(.98);
+
+    box-shadow: var(--shadow-button-pressed);
+}
+
+/* ==========================================================
+   PRIMARY BUTTON (TEAL)
+   ========================================================== */
+
+.primary-button,
+.add-contact-button {
+
+    background: var(--gradient-teal);
+
+    color: white;
+
+    border-color: var(--border-dark);
+}
+
+/* Plus icon */
+
+.add-contact-button span {
+
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+/* ==========================================================
+   SECONDARY BUTTON (CAMEL)
+   ========================================================== */
+
+.secondary-button {
+
+    background: var(--gradient-camel);
+
+    color: var(--text-dark);
+
+    border-color: var(--camel-400);
+
+    box-shadow:
+        0 6px 0 #99651b,
+        0 10px 16px rgba(130,85,20,.18);
+}
+
+.secondary-button:hover {
+    box-shadow:
+        0 8px 0 #99651b,
+        0 12px 18px rgba(130,85,20,.2);
+}
+
+.secondary-button:active {
+    box-shadow:
+        0 2px 0 #99651b,
+        0 4px 10px rgba(130,85,20,.15);
+}
+
+/* ==========================================================
+   DELETE BUTTON
+   ========================================================== */
+
+.danger-button {
+
+    background: linear-gradient(
+        180deg,
+        #F58B72 0%,
+        #E76F51 60%,
+        #C7523B 100%
+    );
+
+    color: white;
+
+    border-color: #A53E2C;
+
+    box-shadow:
+        0 6px 0 #963626,
+        0 10px 16px rgba(170,70,50,.2);
+}
+
+.danger-button:hover {
+    box-shadow:
+        0 8px 0 #963626,
+        0 12px 18px rgba(170,70,50,.24);
+}
+
+.danger-button:active {
+    box-shadow:
+        0 2px 0 #963626,
+        0 4px 10px rgba(170,70,50,.18);
+}
+
+/* ==========================================================
+   ICON BUTTONS
+   ========================================================== */
+
+.icon-button {
+
+    width: 56px;
+    height: 56px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    background: var(--gradient-camel);
+
+    color: var(--text-dark);
+
+    border-color: var(--camel-400);
+
+    font-size: 1.3rem;
+
+    box-shadow:
+        0 6px 0 #9B6519,
+        0 10px 18px rgba(145,95,20,.2);
+}
+
+.icon-button.home-button {
+    width: 60px;
+    height: 60px;
+}
+
+/* ==========================================================
+   FLOATING ACTION BUTTON
+   ========================================================== */
+
+.floating-button {
+
+    width: var(--fab-size);
+    height: var(--fab-size);
+
+    border-radius: 50%;
+
+    background: var(--gradient-teal);
+
+    color: white;
+
+    border: 5px solid var(--border-dark);
+
+    font-size: 2rem;
+    font-weight: 900;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 8px 0 #165954,
+        0 16px 22px rgba(23,94,89,.25);
+
+    transition: var(--transition-bounce);
+}
+
+.floating-button:hover {
+    transform: translateY(-4px) rotate(-5deg) scale(1.05);
+
+    box-shadow:
+        0 10px 0 #165954,
+        0 20px 28px rgba(23,94,89,.28);
+}
+
+.floating-button:active {
+    transform: translateY(5px) rotate(0deg) scale(.96);
+
+    box-shadow:
+        0 3px 0 #165954,
+        0 6px 12px rgba(23,94,89,.2);
+}
+
+/* ==========================================================
+   FILTER PILLS
+   ========================================================== */
+
+.filter-pill {
+
+    background: var(--cream-100);
+
+    color: var(--teal-500);
+
+    border-color: var(--teal-300);
+
+    border-width: 3px;
+
+    padding: 12px 22px;
+
+    min-height: auto;
+
+    box-shadow:
+        0 5px 0 #2A8B84,
+        0 10px 14px rgba(46,156,149,.14);
+}
+
+.filter-pill.active {
+
+    background: var(--gradient-teal);
+
+    color: white;
+
+    border-color: var(--border-dark);
+}
+
+.filter-pill.active::after {
+
+    content: "";
+
+    width: 8px;
+    height: 8px;
+
+    background: #FFF3A8;
+
+    border-radius: 50%;
+
+    margin-left: 6px;
+}
+
+/* ==========================================================
+   CARD MENU BUTTON
+   ========================================================== */
+
+.card-menu {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: var(--cream-100);
+
+    color: var(--teal-500);
+
+    border: 3px solid var(--teal-300);
+
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 4px 0 #2A8B84;
+}
+
+.card-menu:hover {
+    transform: rotate(90deg);
+}
+
+.card-menu:active {
+    transform: translateY(3px) rotate(90deg);
+
+    box-shadow:
+        0 2px 0 #2A8B84;
+}
+
+/* ==========================================================
+   MODAL CLOSE BUTTON
+   ========================================================== */
+
+.modal-close {
+
+    position: absolute;
+
+    top: -16px;
+    right: -16px;
+
+    width: 54px;
+    height: 54px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        180deg,
+        #FFD46E,
+        #E6AE39
+    );
+
+    color: var(--text-dark);
+
+    border: 4px solid var(--camel-400);
+
+    font-size: 1.25rem;
+    font-weight: 900;
+
+    box-shadow:
+        0 6px 0 #9A641B,
+        0 12px 16px rgba(140,90,20,.2);
+
+    z-index: 5;
+}
+
+.modal-close:hover {
+    transform: rotate(10deg) scale(1.05);
+}
+
+.modal-close:active {
+    transform: translateY(4px) rotate(10deg);
+
+    box-shadow:
+        0 2px 0 #9A641B;
+}
+
+/* ==========================================================
+   BUTTON GROUPS
+   ========================================================== */
+
+.modal-actions,
+.profile-actions {
+
+    display: flex;
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+    margin-top: 28px;
+}
+
+.modal-actions button,
+.profile-actions button {
+    flex: 1;
+    min-width: 140px;
+}
+
+/* ==========================================================
+   SMALL INLINE BUTTONS
+   ========================================================== */
+
+.small-button {
+
+    min-height: 44px;
+
+    padding: 10px 18px;
+
+    font-size: var(--text-sm);
+
+    border-radius: 18px;
+}
+
+/* ==========================================================
+   DISABLED BUTTON
+   ========================================================== */
+
+button:disabled {
+
+    opacity: .55;
+    cursor: not-allowed;
+
+    transform: none !important;
+
+    box-shadow: none;
+}

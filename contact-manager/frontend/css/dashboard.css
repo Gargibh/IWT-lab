@@ -1,0 +1,175 @@
+/* ==========================================================
+   DASHBOARD PAGE
+   Contact List Screen
+   ========================================================== */
+
+/* ==========================================================
+   PAGE TITLE / HEADER AREA
+   ========================================================== */
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+/* ==========================================================
+   TOOLBAR
+   Search + Add Button
+   ========================================================== */
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    flex: 1;
+}
+
+.add-contact-button {
+    min-width: 190px;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/* ==========================================================
+   FILTER PILLS ROW
+   ========================================================== */
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: -0.4rem;
+}
+
+/* Slight spacing under pills before cards */
+
+.filter-row + .contacts-grid {
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================
+   CONTACT GRID
+   ========================================================== */
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 4rem;
+}
+
+/* ==========================================================
+   CONTACT CARD DETAILS
+   ========================================================== */
+
+.contact-card {
+    min-height: 285px;
+}
+
+.contact-card h2 {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.contact-card p {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 0.92rem;
+    gap: 0.55rem;
+}
+
+.contact-card .category-tag {
+    margin-top: auto;
+}
+
+/* ==========================================================
+   MENU BUTTON POSITION
+   ========================================================== */
+
+.card-menu {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+/* ==========================================================
+   EMPTY GRID STATE
+   ========================================================== */
+
+.contacts-grid.empty {
+    display: block;
+}
+
+/* ==========================================================
+   FLOATING ADD BUTTON
+   ========================================================== */
+
+.floating-button {
+    position: fixed;
+    bottom: 26px;
+    right: 28px;
+}
+
+/* ==========================================================
+   CONTACT COUNTER BADGE
+   ========================================================== */
+
+.contact-counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================
+   SEARCH INPUT ACTIVE ANIMATION
+   ========================================================== */
+
+.search-container:focus-within {
+    transform: translateY(-2px);
+    transition: var(--transition-fast);
+}
+
+/* ==========================================================
+   FILTER ACTIVE INDICATOR
+   ========================================================== */
+
+.filter-pill.active {
+    transform: translateY(2px);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add-contact-button {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .floating-button {
+        bottom: 20px;
+        right: 20px;
+    }
+
+}

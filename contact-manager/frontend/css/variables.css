@@ -1,0 +1,234 @@
+/* ==========================================================
+   CONTACT MANAGER — DESIGN TOKENS
+   Retro Camel + Teal Tactile Theme
+   ========================================================== */
+
+:root {
+
+    /* ======================================================
+       COLOR PALETTE
+    ====================================================== */
+
+    /* Backgrounds */
+    --cream-100: #FFF8EA;
+    --cream-200: #F8ECCE;
+    --cream-300: #F2DEB0;
+
+    /* Camel / Mustard */
+    --camel-100: #F3D27B;
+    --camel-200: #E7BC55;
+    --camel-300: #D99C32;
+    --camel-400: #B9771D;
+
+    /* Teal */
+    --teal-100: #CFEDEA;
+    --teal-200: #7CCBC4;
+    --teal-300: #2E9C95;
+    --teal-400: #1F7F79;
+    --teal-500: #175E59;
+
+    /* Accent / States */
+    --success: #4CAF77;
+    --success-dark: #2E7D55;
+
+    --danger: #E76F51;
+    --danger-dark: #C55239;
+
+    --warning: #F6A623;
+
+    /* Text */
+    --text-dark: #21403D;
+    --text-medium: #476360;
+    --text-light: #FDFCF8;
+
+    /* Borders */
+    --border-dark: #225E59;
+    --border-light: #FDF4DD;
+
+
+    /* ======================================================
+       SHADOWS
+       Creates chunky plastic toy depth.
+    ====================================================== */
+
+    --shadow-button:
+        0 6px 0 #165954,
+        0 10px 18px rgba(25, 65, 60, .18);
+
+    --shadow-button-hover:
+        0 8px 0 #165954,
+        0 14px 20px rgba(25, 65, 60, .22);
+
+    --shadow-button-pressed:
+        0 2px 0 #165954,
+        0 4px 10px rgba(25, 65, 60, .16);
+
+    --shadow-card:
+        0 10px 22px rgba(45, 80, 75, .12);
+
+    --shadow-card-hover:
+        0 14px 28px rgba(45, 80, 75, .18);
+
+    --shadow-modal:
+        0 22px 40px rgba(35, 70, 66, .22);
+
+    --shadow-inner:
+        inset 0 3px 6px rgba(255,255,255,.6),
+        inset 0 -3px 5px rgba(0,0,0,.06);
+
+    --shadow-input:
+        inset 0 2px 5px rgba(0,0,0,.08),
+        inset 0 -2px 3px rgba(255,255,255,.7);
+
+
+    /* ======================================================
+       BORDER WIDTHS
+    ====================================================== */
+
+    --border-thick: 4px;
+    --border-medium: 3px;
+    --border-thin: 2px;
+
+
+    /* ======================================================
+       BORDER RADII
+    ====================================================== */
+
+    --radius-xs: 12px;
+    --radius-sm: 18px;
+    --radius-md: 24px;
+    --radius-lg: 30px;
+    --radius-xl: 40px;
+    --radius-round: 999px;
+
+
+    /* ======================================================
+       SPACING SYSTEM
+    ====================================================== */
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-7: 32px;
+    --space-8: 40px;
+    --space-9: 48px;
+    --space-10: 56px;
+    --space-11: 64px;
+
+
+    /* ======================================================
+       TYPOGRAPHY
+    ====================================================== */
+
+    --font-main: "Baloo 2", "Trebuchet MS", "Nunito", sans-serif;
+
+    --text-xs: .78rem;
+    --text-sm: .92rem;
+    --text-base: 1rem;
+    --text-md: 1.1rem;
+    --text-lg: 1.3rem;
+    --text-xl: 1.7rem;
+    --text-2xl: 2.3rem;
+
+    --weight-normal: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-heavy: 800;
+
+
+    /* ======================================================
+       BUTTON SIZES
+    ====================================================== */
+
+    --button-height: 58px;
+    --button-radius: 24px;
+
+    --fab-size: 72px;
+
+
+    /* ======================================================
+       CARD SIZES
+    ====================================================== */
+
+    --card-radius: 28px;
+    --avatar-size: 78px;
+    --avatar-small: 58px;
+
+
+    /* ======================================================
+       MODALS
+    ====================================================== */
+
+    --modal-width: 470px;
+    --modal-radius: 34px;
+
+    --overlay: rgba(27, 49, 47, .35);
+
+
+    /* ======================================================
+       TRANSITIONS
+    ====================================================== */
+
+    --transition-fast: .18s ease;
+    --transition-normal: .28s cubic-bezier(.25,.8,.25,1);
+    --transition-bounce: .38s cubic-bezier(.2,1.2,.35,1);
+
+
+    /* ======================================================
+       GRADIENTS
+       Used for glossy plastic effect.
+    ====================================================== */
+
+    --gradient-teal:
+        linear-gradient(
+            180deg,
+            #4CB8AF 0%,
+            #28938C 55%,
+            #1B726C 100%
+        );
+
+    --gradient-camel:
+        linear-gradient(
+            180deg,
+            #FFD87D 0%,
+            #EAB84F 60%,
+            #CF9630 100%
+        );
+
+    --gradient-card:
+        linear-gradient(
+            180deg,
+            #FFF9EE 0%,
+            #F6E7C6 100%
+        );
+
+    --gradient-background:
+        linear-gradient(
+            180deg,
+            #FFFDF8 0%,
+            #FAF1DA 100%
+        );
+
+    --gradient-modal:
+        linear-gradient(
+            180deg,
+            #FFF7E7 0%,
+            #F6E3BA 100%
+        );
+
+
+    /* ======================================================
+       DECORATIVE DETAILS
+    ====================================================== */
+
+    --plastic-highlight: rgba(255,255,255,.65);
+    --plastic-shadow: rgba(0,0,0,.08);
+
+    --dot-size: 10px;
+
+    --outline-ring: 0 0 0 4px rgba(124,203,196,.35);
+
+}

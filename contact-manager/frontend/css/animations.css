@@ -1,0 +1,426 @@
+/* ==========================================================
+   ANIMATIONS
+   Retro Tactile Toy Motion
+   ========================================================== */
+
+/* ==========================================================
+   BUTTON PRESS BOUNCE
+   ========================================================== */
+
+@keyframes buttonBounce {
+    0% {
+        transform: translateY(4px) scale(0.98);
+    }
+    40% {
+        transform: translateY(-2px) scale(1.02);
+    }
+    70% {
+        transform: translateY(1px) scale(0.995);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Optional utility class if JS adds it */
+
+.button-pop {
+    animation: buttonBounce 0.28s ease;
+}
+
+/* ==========================================================
+   MODAL POP OPEN
+   ========================================================== */
+
+@keyframes modalPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.82) translateY(40px);
+    }
+
+    55% {
+        opacity: 1;
+        transform: scale(1.04) translateY(-8px);
+    }
+
+    75% {
+        transform: scale(0.99) translateY(2px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Modal close animation */
+
+@keyframes modalClose {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+}
+
+/* ==========================================================
+   FLOATING BUTTON WOBBLE
+   ========================================================== */
+
+@keyframes floatWobble {
+
+    0%,100% {
+        transform: rotate(0deg);
+    }
+
+    30% {
+        transform: rotate(-4deg);
+    }
+
+    60% {
+        transform: rotate(4deg);
+    }
+}
+
+.floating-button:hover {
+    animation: floatWobble 0.5s ease;
+}
+
+/* ==========================================================
+   CARD LIFT
+   ========================================================== */
+
+@keyframes cardLift {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-8px);
+    }
+}
+
+.contact-card:hover {
+    animation: cardLift 0.22s ease forwards;
+}
+
+/* ==========================================================
+   CARD DROP SHADOW POP
+   ========================================================== */
+
+@keyframes cardPop {
+
+    0% {
+        transform: scale(0.98);
+    }
+
+    60% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.contact-card:active {
+    animation: cardPop .18s ease;
+}
+
+/* ==========================================================
+   AVATAR LITTLE BOUNCE
+   ========================================================== */
+
+@keyframes avatarBounce {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-5px);
+    }
+
+    70% {
+        transform: translateY(2px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.avatar-circle:hover,
+.profile-avatar:hover {
+    animation: avatarBounce .45s ease;
+}
+
+/* ==========================================================
+   FILTER PILL PRESS
+   ========================================================== */
+
+@keyframes pillPress {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.94);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.filter-pill:active {
+    animation: pillPress .22s ease;
+}
+
+/* ==========================================================
+   SEARCH BAR GLOW
+   ========================================================== */
+
+@keyframes searchGlow {
+
+    from {
+        box-shadow:
+            var(--shadow-input),
+            0 0 0 rgba(124,203,196,0);
+    }
+
+    to {
+        box-shadow:
+            var(--shadow-input),
+            0 0 0 6px rgba(124,203,196,.18);
+    }
+}
+
+.search-container:focus-within {
+    animation: searchGlow .25s ease forwards;
+}
+
+/* ==========================================================
+   TOAST SLIDE UP
+   ========================================================== */
+
+@keyframes toastSlide {
+
+    from {
+        opacity: 0;
+        transform: translate(-50%, 50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes toastHide {
+
+    from {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-50%, 35px);
+    }
+}
+
+/* JS can add this class before hiding */
+
+.toast.hide {
+    animation: toastHide .3s ease forwards;
+}
+
+/* ==========================================================
+   DELETE MODAL SHAKE
+   ========================================================== */
+
+@keyframes shake {
+
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+.delete-modal.shake {
+    animation: shake .35s ease;
+}
+
+/* ==========================================================
+   SUCCESS POP
+   ========================================================== */
+
+@keyframes successPop {
+
+    0% {
+        transform: scale(.85);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.toast.show {
+    animation: successPop .3s ease;
+}
+
+/* ==========================================================
+   MODAL OVERLAY FADE
+   ========================================================== */
+
+@keyframes overlayFade {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-overlay {
+    animation: overlayFade .25s ease;
+}
+
+/* ==========================================================
+   SOFT PULSE
+   Used for Add Contact FAB when page loads.
+   ========================================================== */
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.floating-button {
+    animation: pulse 2.8s ease-in-out infinite;
+}
+
+.floating-button:hover {
+    animation: floatWobble .5s ease;
+}
+
+/* ==========================================================
+   LOADING SPINNER
+   (Useful later when saving to MySQL)
+   ========================================================== */
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+
+    width: 20px;
+    height: 20px;
+
+    border: 3px solid rgba(255,255,255,.4);
+    border-top-color: white;
+
+    border-radius: 50%;
+
+    animation: spin .8s linear infinite;
+}
+
+/* ==========================================================
+   FADE-IN UTILITIES
+   ========================================================== */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    animation: fadeUp .45s ease both;
+}
+
+.fade-delay-1 {
+    animation-delay: .08s;
+}
+
+.fade-delay-2 {
+    animation-delay: .16s;
+}
+
+.fade-delay-3 {
+    animation-delay: .24s;
+}
+
+/* ==========================================================
+   REDUCED MOTION ACCESSIBILITY
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+}

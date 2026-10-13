@@ -1,0 +1,283 @@
+/* ==========================================================
+   CONTACT DETAILS PAGE
+   Second Screen Layout
+   ========================================================== */
+
+/* ==========================================================
+   PAGE LAYOUT
+   ========================================================== */
+
+.contact-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 4rem;
+}
+
+/* ==========================================================
+   MAIN PROFILE CARD
+   ========================================================== */
+
+.profile-card {
+    width: 100%;
+    max-width: 760px;
+    position: relative;
+}
+
+/* Decorative bottom highlight */
+
+.profile-card::after {
+    content: "";
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 16px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(46, 156, 149, 0.08);
+}
+
+/* ==========================================================
+   PROFILE HEADER
+   ========================================================== */
+
+.profile-top {
+    align-items: center;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-info h2 {
+    margin-bottom: 0.7rem;
+    line-height: 1.1;
+}
+
+/* ==========================================================
+   CATEGORY + COMPANY
+   ========================================================== */
+
+.tag-row {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.company-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================
+   CONTACT INFORMATION SECTION
+   ========================================================== */
+
+.contact-information {
+    margin-top: 2rem;
+}
+
+.info-item {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Soft glossy strip */
+
+.info-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 8px;
+    right: 8px;
+    height: 40%;
+    border-radius: 999px;
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.45),
+        rgba(255,255,255,0)
+    );
+    pointer-events: none;
+}
+
+.info-item:hover {
+    transform: translateY(-2px);
+    transition: var(--transition-fast);
+}
+
+/* ==========================================================
+   NOTES BOX
+   ========================================================== */
+
+.notes-box {
+    position: relative;
+}
+
+.notes-box h3 {
+    color: var(--teal-500);
+    margin-bottom: 1rem;
+}
+
+.notes-box p {
+    font-size: 0.98rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+/* Decorative quote bubble */
+
+.notes-box::before {
+    content: "💬";
+    position: absolute;
+    top: -18px;
+    right: 18px;
+    font-size: 1.3rem;
+    background: var(--cream-100);
+    border: 3px solid var(--camel-200);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================
+   ACTION BUTTONS
+   ========================================================== */
+
+.profile-actions {
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.profile-actions .secondary-button,
+.profile-actions .danger-button {
+    min-height: 60px;
+    font-size: 1rem;
+}
+
+/* ==========================================================
+   CONTACT DETAILS METADATA
+   (optional future use)
+   ========================================================== */
+
+.contact-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.2rem;
+}
+
+.meta-pill {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(46,156,149,.08);
+    border: 2px solid rgba(46,156,149,.18);
+    font-size: 0.8rem;
+    font-weight: var(--weight-bold);
+    color: var(--teal-500);
+}
+
+/* ==========================================================
+   PROFILE AVATAR HOVER
+   ========================================================== */
+
+.profile-avatar {
+    transition: var(--transition-bounce);
+}
+
+.profile-avatar:hover {
+    transform: rotate(-5deg) scale(1.05);
+}
+
+/* ==========================================================
+   HORIZONTAL DIVIDER
+   ========================================================== */
+
+.profile-card hr {
+    margin: 2rem 0;
+}
+
+/* ==========================================================
+   RESPONSIVE TABLET
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+    .profile-card {
+        padding: 28px;
+    }
+
+    .profile-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-info {
+        align-items: center;
+    }
+
+    .tag-row {
+        justify-content: center;
+    }
+
+    .contact-information {
+        margin-top: 1.5rem;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    .profile-actions button {
+        width: 100%;
+    }
+
+}
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media (max-width: 480px) {
+
+    .contact-page {
+        padding-bottom: 5rem;
+    }
+
+    .profile-card {
+        padding: 22px;
+        border-radius: 28px;
+    }
+
+    .profile-avatar {
+        width: 88px;
+        height: 88px;
+        font-size: 2.2rem;
+    }
+
+    .profile-info h2 {
+        font-size: 1.6rem;
+    }
+
+    .info-item {
+        padding: 14px 16px;
+        font-size: 0.9rem;
+    }
+
+    .notes-box {
+        padding: 18px;
+    }
+
+    .notes-box::before {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+        top: -16px;
+    }
+
+}
