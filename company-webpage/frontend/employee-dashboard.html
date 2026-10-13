@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile | Meridian Corp</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<div class="dash-topbar">
+  <div class="brand"><span class="mark"></span> Meridian Corp</div>
+  <div class="user-info">
+    <span id="userGreeting">Loading...</span>
+    <button class="btn btn-secondary" id="logoutBtn">Log Out</button>
+  </div>
+</div>
+
+<div class="dash-container">
+  <div class="welcome-block">
+    <h1 id="welcomeName">Welcome</h1>
+    <p>Keep your profile details up to date below.</p>
+  </div>
+
+  <div id="pageMessage" class="form-message" style="display:none;"></div>
+
+  <div class="dash-card">
+    <h2>My Employee Details</h2>
+
+    <form id="profileForm" novalidate>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="full_name" disabled>
+      </div>
+      <div class="form-group">
+        <label>Employee ID</label>
+        <input type="text" id="employee_id" disabled>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" id="email" disabled>
+      </div>
+      <div class="form-group">
+        <label>Department</label>
+        <input type="text" id="department" disabled>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender">
+          <option value="">-- Select --</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+        <span class="error-message" id="err-phone"></span>
+      </div>
+      <div class="form-group">
+        <label for="joining_date">Joining Date</label>
+        <input type="date" id="joining_date" name="joining_date">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city">
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" id="state" name="state">
+      </div>
+      <div class="form-group">
+        <label for="designation">Designation</label>
+        <input type="text" id="designation" disabled>
+      </div>
+      <div class="form-group">
+        <label for="emergency_contact">Emergency Contact</label>
+        <input type="tel" id="emergency_contact" name="emergency_contact">
+      </div>
+
+      <div class="form-group full-width">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3"></textarea>
+      </div>
+      <div class="form-group full-width">
+        <label for="skills">Skills</label>
+        <textarea id="skills" name="skills" rows="2" placeholder="Comma-separated, e.g. Excel, Project Management"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="saveBtn">Save Details</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/employee.js"></script>
+</body>
+</html>

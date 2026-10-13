@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | Meridian Corp</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo"><span class="mark"></span> Meridian Corp</div>
+  <nav><a href="index.html">Home</a><a href="login.html">Login</a></nav>
+</header>
+
+<div class="auth-wrapper">
+  <div class="auth-card wide">
+    <div class="auth-header">
+      <h1>Create your employee account</h1>
+      <p>Register once, then log in to manage your profile</p>
+    </div>
+
+    <div id="formMessage" class="form-message" style="display:none;"></div>
+
+    <form id="registerForm" novalidate>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="full_name">Full Name <span class="required">*</span></label>
+          <input type="text" id="full_name" name="full_name" required>
+          <span class="error-message" id="err-full_name"></span>
+        </div>
+        <div class="form-group">
+          <label for="employee_id">Employee ID <span class="required">*</span></label>
+          <input type="text" id="employee_id" name="employee_id" placeholder="e.g. EMP1042" required>
+          <span class="error-message" id="err-employee_id"></span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required>
+          <span class="error-message" id="err-email"></span>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="10-digit number" required>
+          <span class="error-message" id="err-phone"></span>
+        </div>
+        <div class="form-group">
+          <label for="department">Department <span class="required">*</span></label>
+          <select id="department" name="department" required>
+            <option value="">-- Select Department --</option>
+            <option value="Human Resources">Human Resources</option>
+            <option value="Finance">Finance</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Sales">Sales</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Operations">Operations</option>
+          </select>
+          <span class="error-message" id="err-department"></span>
+        </div>
+        <div class="form-group">
+          <label for="designation">Designation <span class="required">*</span></label>
+          <input type="text" id="designation" name="designation" required>
+          <span class="error-message" id="err-designation"></span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password <span class="required">*</span></label>
+          <input type="password" id="password" name="password" minlength="8" required>
+          <span class="error-message" id="err-password"></span>
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Confirm Password <span class="required">*</span></label>
+          <input type="password" id="confirm_password" name="confirm_password" required>
+          <span class="error-message" id="err-confirm_password"></span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="submitBtn">Create Account</button>
+    </form>
+
+    <p class="auth-footer-link">Already have an account? <a href="login.html">Log in</a></p>
+  </div>
+</div>
+
+<script src="js/register.js"></script>
+</body>
+</html>

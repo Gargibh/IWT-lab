@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Meridian Corp</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo"><span class="mark"></span> Meridian Corp</div>
+  <nav><a href="index.html">Home</a><a href="register.html">Register</a></nav>
+</header>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1>Welcome back</h1>
+      <p>Log in to your Meridian Corp account</p>
+    </div>
+
+    <div class="role-tabs">
+      <button type="button" class="role-tab active" data-role="employee">Employee</button>
+      <button type="button" class="role-tab" data-role="admin">Admin</button>
+    </div>
+
+    <div id="formMessage" class="form-message" style="display:none;"></div>
+
+    <form id="loginForm" novalidate>
+      <input type="hidden" id="expectedRole" value="employee">
+
+      <div class="form-group">
+        <label for="email">Email <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-message" id="err-email"></span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password <span class="required">*</span></label>
+        <input type="password" id="password" name="password" required>
+        <span class="error-message" id="err-password"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="submitBtn">Log In as Employee</button>
+    </form>
+
+    <p class="auth-footer-link" id="registerHint">
+      Don't have an account? <a href="register.html">Register here</a>
+    </p>
+  </div>
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>
