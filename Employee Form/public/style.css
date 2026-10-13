@@ -1,0 +1,331 @@
+/* ===================== Reset & Base ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  min-height: 100vh;
+  color: #1f2937;
+  padding: 30px 15px;
+}
+
+/* ===================== Layout ===================== */
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.form-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  padding: 35px 40px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form-header h1 {
+  font-size: 26px;
+  color: #182848;
+  margin-bottom: 6px;
+}
+
+.form-header p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.top-link {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.top-link a {
+  color: #4b6cb7;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.top-link a:hover {
+  text-decoration: underline;
+}
+
+/* ===================== Form Message Banner ===================== */
+.form-message {
+  grid-column: 1 / -1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.form-message.success {
+  background: #f0fdf4;
+  border: 1px solid #16a34a;
+  color: #16a34a;
+}
+
+.form-message.error {
+  background: #fef2f2;
+  border: 1px solid #dc2626;
+  color: #dc2626;
+}
+
+/* ===================== Form Grid ===================== */
+#employeeForm,
+#editForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.required {
+  color: #dc2626;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #f9fafb;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4b6cb7;
+  box-shadow: 0 0 0 3px rgba(75, 108, 183, 0.15);
+  background: #ffffff;
+}
+
+input:disabled {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+input.invalid,
+select.invalid,
+textarea.invalid {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+/* ===================== Radio Group ===================== */
+.radio-group {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.radio-label input {
+  width: auto;
+  cursor: pointer;
+}
+
+/* ===================== Error Messages ===================== */
+.error-message {
+  color: #dc2626;
+  font-size: 12.5px;
+  min-height: 16px;
+  margin-top: 4px;
+}
+
+/* ===================== Buttons ===================== */
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 11px 26px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #4b6cb7;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #3a56a0;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+/* ===================== Employees Table Page ===================== */
+.table-wrapper {
+  background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  overflow-x: auto;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.table-header h1 {
+  color: #182848;
+  font-size: 24px;
+}
+
+.table-header .btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 1000px;
+}
+
+thead th {
+  background: #182848;
+  color: #fff;
+  text-align: left;
+  padding: 12px 10px;
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+tbody tr:hover {
+  background: #f3f4f6;
+}
+
+.no-records {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+}
+
+.action-links a {
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.action-links .edit-link {
+  color: #2563eb;
+}
+
+.action-links .delete-link {
+  color: #dc2626;
+}
+
+.action-links a:hover {
+  text-decoration: underline;
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 700px) {
+  #employeeForm,
+  #editForm {
+    grid-template-columns: 1fr;
+  }
+
+  .form-card {
+    padding: 25px 20px;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
