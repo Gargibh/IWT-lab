@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — Department of Computer Science</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/index.html" class="brand"><span class="dot"></span> Dept. of Computer Science</a>
+    <button id="menu-toggle" class="menu-toggle">☰ Menu</button>
+    <ul id="nav-links"></ul>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <h1 class="section-title">My Profile</h1>
+      <p class="section-subtitle">View and manage your account details</p>
+    </div>
+
+    <div class="card" style="max-width: 640px; margin: 0 auto 24px auto;">
+      <h3>Account Details</h3>
+      <div id="profile-details">
+        <p>Loading...</p>
+      </div>
+      <button id="toggle-edit" class="btn btn-outline" style="margin-top: 18px;">Edit Email / Phone / Password</button>
+    </div>
+
+    <div id="edit-panel" class="form-card" style="display:none;">
+      <h3 style="text-align:center;">Update Profile</h3>
+      <div id="form-alert" class="alert"></div>
+
+      <form id="edit-profile-form" novalidate>
+        <label for="edit-email">Email</label>
+        <input type="email" id="edit-email" name="email" placeholder="jane@college.edu">
+
+        <label for="edit-phone">Phone Number</label>
+        <input type="tel" id="edit-phone" name="phone" placeholder="9876543210" maxlength="10">
+
+        <div class="password-wrapper">
+          <label for="new_password">New Password (leave blank to keep current)</label>
+          <input type="password" id="new_password" name="new_password" placeholder="At least 8 characters">
+          <button type="button" class="toggle-pw" data-target="new_password">Show</button>
+        </div>
+
+        <div class="password-wrapper">
+          <label for="confirm_new_password">Confirm New Password</label>
+          <input type="password" id="confirm_new_password" name="confirm_new_password" placeholder="Re-enter new password">
+          <button type="button" class="toggle-pw" data-target="confirm_new_password">Show</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top: 10px;">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-brand">Department of Computer Science</div>
+    <p>&copy; 2026 College of Engineering &amp; Technology. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/navbar.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>

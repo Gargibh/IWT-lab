@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Department of Computer Science</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/index.html" class="brand"><span class="dot"></span> Dept. of Computer Science</a>
+    <button id="menu-toggle" class="menu-toggle">☰ Menu</button>
+    <ul id="nav-links"></ul>
+  </nav>
+
+  <div class="container">
+    <div class="form-card">
+      <h2 style="text-align:center;">Welcome Back</h2>
+      <p style="text-align:center; color: var(--cs-grey);">Log in to access your dashboard</p>
+
+      <div id="form-alert" class="alert"></div>
+
+      <form id="login-form" novalidate>
+        <label for="identifier">Username or Email</label>
+        <input type="text" id="identifier" name="identifier" placeholder="e.g. jane_doe or jane@college.edu" required>
+
+        <div class="password-wrapper">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <button type="button" class="toggle-pw">Show</button>
+        </div>
+
+        <div class="remember-row">
+          <label><input type="checkbox" id="remember" name="remember"> Remember me</label>
+          <a href="#" id="forgot-password">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Login</button>
+      </form>
+
+      <p class="form-footer-link">Don't have an account? <a href="/register.html">Register here</a></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-brand">Department of Computer Science</div>
+    <p>&copy; 2026 College of Engineering &amp; Technology. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/navbar.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

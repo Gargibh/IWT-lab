@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — Department of Computer Science</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/index.html" class="brand"><span class="dot"></span> Dept. of Computer Science</a>
+    <button id="menu-toggle" class="menu-toggle">☰ Menu</button>
+    <ul id="nav-links"></ul>
+  </nav>
+
+  <div class="container">
+    <div class="form-card" style="max-width: 680px;">
+      <h2 style="text-align:center;">Create Your Account</h2>
+      <p style="text-align:center; color: var(--cs-grey);">Register for the Department of Computer Science portal</p>
+
+      <div id="form-alert" class="alert"></div>
+
+      <form id="register-form" novalidate>
+        <div class="form-grid">
+
+          <div>
+            <label for="full_name">Full Name</label>
+            <input type="text" id="full_name" name="full_name" placeholder="Jane Doe">
+            <span class="field-error" id="full_name-error"></span>
+          </div>
+
+          <div>
+            <label for="register_number">Register Number</label>
+            <input type="text" id="register_number" name="register_number" placeholder="CS2026045">
+            <span class="field-error" id="register_number-error"></span>
+          </div>
+
+          <div>
+            <label for="department">Department</label>
+            <select id="department" name="department">
+              <option value="">Select Department</option>
+              <option value="BCA">BCA</option>
+              <option value="MCA">MCA</option>
+              <option value="B.Sc Computer Science">B.Sc Computer Science</option>
+              <option value="M.Sc Computer Science">M.Sc Computer Science</option>
+            </select>
+            <span class="field-error" id="department-error"></span>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@college.edu">
+            <span class="field-error" id="email-error"></span>
+          </div>
+
+          <div>
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="9876543210" maxlength="10">
+            <span class="field-error" id="phone-error"></span>
+          </div>
+
+          <div>
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="field-error" id="gender-error"></span>
+          </div>
+
+          <div>
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob">
+            <span class="field-error" id="dob-error"></span>
+          </div>
+
+          <div>
+            <label for="year_of_study">Year of Study</label>
+            <select id="year_of_study" name="year_of_study">
+              <option value="">Select Year</option>
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="Final Year">Final Year</option>
+            </select>
+            <span class="field-error" id="year_of_study-error"></span>
+          </div>
+
+          <div class="full-width">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="jane_doe">
+            <span class="field-error" id="username-error"></span>
+          </div>
+
+          <div class="password-wrapper">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="At least 8 characters">
+            <button type="button" class="toggle-pw" data-target="password">Show</button>
+            <span class="field-error" id="password-error"></span>
+          </div>
+
+          <div class="password-wrapper">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter password">
+            <button type="button" class="toggle-pw" data-target="confirm_password">Show</button>
+            <span class="field-error" id="confirm_password-error"></span>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top: 10px;">Register</button>
+      </form>
+
+      <p class="form-footer-link">Already have an account? <a href="/login.html">Login here</a></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-brand">Department of Computer Science</div>
+    <p>&copy; 2026 College of Engineering &amp; Technology. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/navbar.js"></script>
+  <script src="/js/register.js"></script>
+</body>
+</html>

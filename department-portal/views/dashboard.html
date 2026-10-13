@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Department of Computer Science</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/index.html" class="brand"><span class="dot"></span> Dept. of Computer Science</a>
+    <button id="menu-toggle" class="menu-toggle">☰ Menu</button>
+    <ul id="nav-links"></ul>
+  </nav>
+
+  <div class="container">
+
+    <div id="dashboard-error" class="alert"></div>
+
+    <!-- Welcome card -->
+    <div class="dash-header">
+      <h2 id="greeting" style="margin:0;">Welcome!</h2>
+      <p id="greeting-sub" style="color: var(--cs-grey); margin: 4px 0 0 0;"></p>
+    </div>
+
+    <div class="grid">
+
+      <!-- Student profile summary -->
+      <div class="card">
+        <h3>Profile Summary</h3>
+        <div id="profile-summary">
+          <p>Loading...</p>
+        </div>
+        <p style="margin-top:14px;"><a href="/profile.html">View full profile →</a></p>
+      </div>
+
+      <!-- Attendance placeholder -->
+      <div class="card">
+        <h3>Attendance</h3>
+        <div class="stat-value" id="attendance-value">—</div>
+        <div class="stat-label" id="attendance-status">Loading...</div>
+      </div>
+
+      <!-- Internal marks placeholder -->
+      <div class="card">
+        <h3>Internal Marks</h3>
+        <div class="stat-value" id="marks-value">—</div>
+        <div class="stat-label" id="marks-label">Loading...</div>
+      </div>
+
+      <!-- Upcoming events -->
+      <div class="card">
+        <h3>Upcoming Events</h3>
+        <ul id="upcoming-events" style="padding-left: 18px; margin: 0;">
+          <li>Loading...</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Department announcements -->
+    <section class="section">
+      <h2 class="section-title">Department Announcements</h2>
+      <div class="grid" id="announcements">
+        <p>Loading announcements...</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-brand">Department of Computer Science</div>
+    <p>&copy; 2026 College of Engineering &amp; Technology. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/navbar.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
