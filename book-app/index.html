@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Explorer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Book Explorer</h1>
+    <button id="load-books" type="button">Load Books</button>
+
+    <!-- Status messages (hidden until needed) -->
+    <p id="loading" class="message" hidden>Loading books...</p>
+    <p id="error" class="message error" hidden></p>
+    <p id="empty" class="message" hidden>No books were found.</p>
+
+    <!-- Books are inserted here -->
+    <section id="book-section" aria-live="polite">
+      <ul id="book-list"></ul>
+    </section>
+  </main>
+
+  <!-- jQuery from the official CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>

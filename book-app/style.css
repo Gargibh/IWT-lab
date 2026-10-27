@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #f5f3ee;
+  color: #222;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  margin-top: 0;
+  color: #1f3a4d;
+}
+
+#load-books {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  color: #fff;
+  background: #1f3a4d;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#load-books:hover { background: #2d5570; }
+#load-books:disabled { background: #8a9aa5; cursor: not-allowed; }
+#load-books:focus-visible { outline: 3px solid #e0a030; outline-offset: 2px; }
+
+.message { margin: 1rem 0; font-style: italic; }
+.message.error { color: #a12626; font-style: normal; font-weight: bold; }
+
+#book-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+#book-list li {
+  background: #fff;
+  border-left: 4px solid #1f3a4d;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.book-title { display: block; font-weight: bold; font-size: 1.1rem; }
+.book-meta  { display: block; color: #555; font-size: 0.95rem; }
