@@ -2,7 +2,8 @@
    CONTACT MANAGER SERVER
    Express + MySQL Backend
    ========================================================== */
-
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -13,6 +14,8 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /* ==========================================================
    MIDDLEWARE
@@ -27,17 +30,15 @@ app.use(express.json());
 // Parse URL encoded forms
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, "../frontend")));
+
 /* ==========================================================
    HEALTH CHECK
    ========================================================== */
 
 app.get("/", (req, res) => {
-    res.json({
-        message: "📒 Contact Manager API is running!",
-        status: "success"
-    });
+    res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
-
 /* ==========================================================
    API ROUTES
    ========================================================== */
