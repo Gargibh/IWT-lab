@@ -1,10 +1,14 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 dotenv.config();
 
-import fs from 'node:fs';
-import path from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /* ======================================
    MYSQL CONNECTION POOL
