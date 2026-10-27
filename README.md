@@ -8,5 +8,5 @@
 6. [Department webpage](https://department-portal-8io1.onrender.com/)
 7. [Company webpage]()
 8. [Contact Management app]()
-9. [Weather app]()
-10. [Book Catalog]()
+9. [Weather app](https://gargibh.github.io/IWT-lab/weather-app/)
+10. [Book Catalog](https://gargibh.github.io/IWT-lab/book-app/)

@@ -8,15 +8,46 @@
 require("dotenv").config();
 const express = require("express");
 const session = require("express-session");
+const MySQLStore = require('express-mysql-session')(session);
+const db = require('./config/db');
 const path = require("path");
+const fs = require('fs');
 
 const authRoutes = require("./routes/auth");
 const employeeRoutes = require("./routes/employee");
 const adminRoutes = require("./routes/admin");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const isProduction = process.env.NODE_ENV === "production";
+
+const sessionStore = new MySQLStore({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: Number(process.env.DB_PORT),
+    ssl: {
+        ca: fs.readFileSync(
+            path.join(__dirname, '..', 'ca.pem'),
+            'utf8'
+        )
+    }
+});
+
+app.use(session({
+    name: 'sessionId',
+    secret: process.env.SESSION_SECRET,
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 1000 * 60 * 60 * 8
+    }
+}));
 
 app.set("trust proxy", 1); // needed when deployed behind a host's proxy (Railway, Render, etc.)
 
@@ -48,6 +79,7 @@ app.use("/auth", authRoutes);
 app.use("/employee", employeeRoutes);
 app.use("/admin", adminRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Meridian Corp EMS running at http://localhost:${PORT}`);
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Meridian Corp EMS running at ${PORT}`);
 });
