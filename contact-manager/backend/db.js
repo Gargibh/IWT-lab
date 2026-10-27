@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const fs = require('fs');
+const path = require('path');
+
 /* ======================================
    MYSQL CONNECTION POOL
 ====================================== */
@@ -17,6 +20,10 @@ const pool = mysql.createPool({
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
+
+    ssl : {
+        ca: fs.readFileSync(path.join(__dirname, '..', 'ca.pem'), 'utf8')
+    },
 });
 
 /* ======================================
