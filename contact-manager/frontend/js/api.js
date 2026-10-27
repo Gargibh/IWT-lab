@@ -3,7 +3,7 @@
    Handles all communication with Express + MySQL backend.
    ========================================================== */
 
-const API_BASE_URL = "http://https://contact-manager-efn9.onrender.com/api/contacts";
+const API_BASE_URL = "https://contact-manager-efn9.onrender.com";
 
 /* ==========================================================
    Generic Request Handler
