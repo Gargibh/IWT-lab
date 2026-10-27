@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
+const db = require("./config/db");
 
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
@@ -73,6 +74,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: 'Internal server error.' });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Department of Computer Science portal running at http://localhost:${PORT}`);
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Department of Computer Science portal running at ${PORT}`);
 });
